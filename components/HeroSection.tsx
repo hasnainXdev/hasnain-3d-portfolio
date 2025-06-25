@@ -173,9 +173,9 @@ const HeroSection = () => {
       <div className="text-center z-10 max-w-4xl">
         <h1
           ref={titleRef}
-          className="font-poppins tracking-tight text-3xl md:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
+          className="font-poppins tracking-wide text-3xl md:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
         >
-          Hi, I'm a Full-Stack Developer <br /> and aspiring Founder
+          Hi, I'm a Full-Stack Developer<br />and aspiring Founder
         </h1>
         
         <p

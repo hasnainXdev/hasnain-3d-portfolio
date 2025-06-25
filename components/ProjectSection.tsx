@@ -1,25 +1,26 @@
 
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 const projects = [
   {
-    title: "AI SaaS Platform",
-    description: "Full-stack application with Next.js, MongoDB, and OpenAI integration",
-    tech: ["Next.js", "MongoDB", "OpenAI", "Stripe"],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&h=400"
+    title: "Trakwise - Finance Made Easy",
+    description: "Full-stack application with Next.js, Tailwind CSS, MongoDB, and Clerk, LemmonSqeezy",
+    tech: ["Next.js", "MongoDB", "Tailwind CSS", "LemmonSqueezy", "Clerk"],
+    image: "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&w=600&h=400"
   },
   {
-    title: "E-commerce Solution",
+    title: "E-commerce solution + CMS",
     description: "Modern e-commerce platform with payment processing and inventory management",
-    tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
+    tech: ["Next.js", "Tailwind CSS", "MongoDB", "Sanity.io", "Stripe"],
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&h=400"
   },
   {
-    title: "AI Chat Application",
+    title: "AI Assistant Agents - Chatbot",
     description: "Real-time chat application with AI-powered responses",
-    tech: ["React", "Socket.io", "Python", "FastAPI"],
-    image: "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&w=600&h=400"
+    tech: ["Python", "OpenAI Agents SDK", "Chainlit"],
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&h=400"
   }
 ];
 
@@ -158,9 +159,11 @@ const ProjectsSection = () => {
                 className="showcase-image absolute top-0 left-0 pointer-events-none z-50 hidden"
                 style={{ transform: 'translateZ(100px)' }}
               >
-                <img 
+                <Image 
                   src={project.image} 
                   alt={project.title}
+                  width={600}
+                  height={400}
                   className="w-72 h-48 object-cover rounded-lg shadow-2xl border-2 border-white/20"
                 />
               </div>
