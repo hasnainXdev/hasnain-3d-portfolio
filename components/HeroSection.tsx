@@ -1,3 +1,4 @@
+"use client";
 
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
@@ -162,25 +163,19 @@ const HeroSection = () => {
           import React from 'react'
         </div>
         <div className="absolute top-3/4 left-1/5 text-gray-400 text-xs font-mono opacity-15 rotate-6">
-          npm install
+          bun install
         </div>
         <div className="absolute bottom-1/5 right-1/5 text-gray-400 text-xs font-mono opacity-15 -rotate-6">
           git commit -m
         </div>
-
-        {/* Additional Symbols */}
-        {/* <div className="absolute top-16 left-1/2 text-red-400 text-xl font-mono opacity-20">{'#'}</div>
-        <div className="absolute bottom-16 left-1/2 text-indigo-400 text-xl font-mono opacity-20">{'$'}</div>
-        <div className="absolute top-1/6 right-1/2 text-teal-400 text-lg font-mono opacity-25">{'@'}</div>
-        <div className="absolute bottom-1/6 right-1/2 text-amber-400 text-lg font-mono opacity-25">{'*'}</div> */}
       </div>
       
       <div className="text-center z-10 max-w-4xl">
         <h1
           ref={titleRef}
-          className="font-poppins text-5xl md:text-7xl font-bold mb-6 leading-tight"
+          className="font-poppins tracking-tight text-3xl md:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
         >
-          Building SaaS, AI, and Next-Gen Web Experiences.
+          Hi, I'm a Full-Stack Developer <br /> and aspiring Founder
         </h1>
         
         <p
@@ -188,11 +183,11 @@ const HeroSection = () => {
           className="font-poppins text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
         >
           I help startups and clients turn ideas into full-stack reality using{' '}
-          <span className="text-white font-semibold">Next.js</span>,{' '}
-          <span className="text-white font-semibold">Python</span>,{' '}
-          <span className="text-white font-semibold">Stripe</span>,{' '}
-          <span className="text-white font-semibold">MongoDB</span>, and{' '}
-          <span className="text-white font-semibold">Agentic AI</span>.
+          <span className="text-white font-semibold border-b-4 pb-0.5 border-red-500">Next.js</span>,{' '}
+          <span className="text-white font-semibold border-b-4 pb-0.5 border-yellow-500">Python</span>,{' '}
+          <span className="text-white font-semibold border-b-4 pb-0.5 border-blue-500">Tailwind CSS</span>,{' '}
+          <span className="text-white font-semibold border-b-4 pb-0.5 border-green-500">MongoDB</span>, and{' '}
+          <span className="text-white font-semibold border-b-4 pb-0.5 border-purple-500">AI Agents</span>.
         </p>
       </div>
     </section>

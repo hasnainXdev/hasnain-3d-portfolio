@@ -1,10 +1,11 @@
+"use client";
 
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const skills = [
-  { 
-    category: 'Frontend', 
+  {
+    category: 'Frontend',
     items: [
       { name: 'Next.js', logo: '▲', color: '#000000' },
       { name: 'React', logo: '⚛️', color: '#61DAFB' },
@@ -12,33 +13,35 @@ const skills = [
       { name: 'ShadCN', logo: '🎯', color: '#000000' }
     ]
   },
-  { 
-    category: 'Backend', 
+  {
+    category: 'Backend',
     items: [
       { name: 'Node.js', logo: '🟢', color: '#339933' },
+      { name: 'Express.js', logo: '🚀', color: '#339933' },
       { name: 'FastAPI', logo: '⚡', color: '#009688' },
       { name: 'Python', logo: '🐍', color: '#3776AB' }
     ]
   },
-  { 
-    category: 'AI', 
+  {
+    category: 'AI',
     items: [
-      { name: 'OpenAI SDK', logo: '🤖', color: '#412991' },
-      { name: 'Dapr', logo: '🔗', color: '#0078D4' },
+      { name: 'OpenAI Agents SDK', logo: '🤖', color: '#412991' },
       { name: 'Chainlit', logo: '⛓️', color: '#FF6B35' }
     ]
   },
-  { 
-    category: 'Database', 
+  {
+    category: 'Database',
     items: [
-      { name: 'MongoDB', logo: '🍃', color: '#47A248' }
+      { name: 'MongoDB', logo: '🍃', color: '#47A248' },
+      { name: "Supabase", logo: "🟢", color: "#3ECF8E" },
     ]
   },
-  { 
-    category: 'Tools', 
+  {
+    category: 'Tools',
     items: [
       { name: 'Vercel', logo: '▲', color: '#000000' },
       { name: 'Stripe', logo: '💳', color: '#635BFF' },
+      { name: 'LemmonSqeezy', logo: '🍋', color: '#FFFFED' },
       { name: 'GitHub', logo: '🐙', color: '#181717' }
     ]
   },
@@ -68,8 +71,8 @@ const SkillsSection = () => {
     // Animate skill items on scroll with 3D effects
     gsap.fromTo(
       ".skill-item",
-      { 
-        scale: 0.8, 
+      {
+        scale: 0.8,
         opacity: 0,
         rotationX: -90,
         z: -200
@@ -93,7 +96,7 @@ const SkillsSection = () => {
     const skillItems = document.querySelectorAll('.skill-item');
     skillItems.forEach((item) => {
       const element = item as HTMLElement;
-      
+
       element.addEventListener('mouseenter', () => {
         gsap.to(element, {
           rotationY: 15,
@@ -122,10 +125,10 @@ const SkillsSection = () => {
         const y = e.clientY - rect.top;
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        
+
         const rotateX = ((y - centerY) / centerY) * -20;
         const rotateY = ((x - centerX) / centerX) * 20;
-        
+
         gsap.to(element, {
           rotationX: rotateX,
           rotationY: rotateY,
@@ -138,12 +141,12 @@ const SkillsSection = () => {
 
   return (
     <section ref={sectionRef} className="py-20 overflow-hidden" style={{ perspective: '1200px' }}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto md:px-4 p-0">
         <h2 className="text-4xl md:text-6xl font-bold text-center mb-16">
           Technical Arsenal
         </h2>
-        
-        <div ref={scrollContainerRef} className="flex space-x-8 w-max">
+
+        <div ref={scrollContainerRef} className="flex md:flex-row flex-col space-x-8 w-max">
           {skills.map((skillGroup, groupIndex) => (
             <div key={groupIndex} className="flex-shrink-0">
               <h3 className="text-2xl font-semibold mb-6 text-gray-300">
@@ -154,15 +157,15 @@ const SkillsSection = () => {
                   <div
                     key={index}
                     className="skill-item bg-gray-900 px-6 py-4 rounded-lg border border-gray-700 hover:border-white transition-all duration-300 hover:shadow-2xl hover:shadow-white/30 cursor-pointer flex items-center space-x-4"
-                    style={{ 
+                    style={{
                       transformStyle: 'preserve-3d',
                       backfaceVisibility: 'hidden',
                       transform: 'translateZ(0)'
                     }}
                   >
-                    <div 
+                    <div
                       className="text-2xl font-bold flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full"
-                      style={{ 
+                      style={{
                         backgroundColor: `${skill.color}20`,
                         color: skill.color,
                         textShadow: `0 0 15px ${skill.color}70`,
@@ -171,7 +174,7 @@ const SkillsSection = () => {
                     >
                       {skill.logo}
                     </div>
-                    <span 
+                    <span
                       className="text-lg font-medium"
                       style={{ transform: 'translateZ(10px)' }}
                     >
