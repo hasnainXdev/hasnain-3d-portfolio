@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
+import { Button } from './ui/button';
 
 const ContactForm = () => {
   const formRef = useRef<HTMLDivElement>(null);
@@ -52,7 +53,7 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! I'll get back to you soon.");
+    toast.success("Coming soon! This form will be functional in the future.");
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -134,9 +135,9 @@ const ContactForm = () => {
             />
           </div>
           
-          <button
+          <Button
             type="submit"
-            className="w-full bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
+            className="w-full bg-white text-black px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
                 boxShadow: "0 10px 30px rgba(255,255,255,0.3)",
@@ -151,7 +152,7 @@ const ContactForm = () => {
             }}
           >
             Send Message
-          </button>
+          </Button>
         </form>
       </div>
     </div>

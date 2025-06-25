@@ -7,7 +7,7 @@ const PassionSection = () => {
   const textRef = useRef<HTMLParagraphElement>(null);
   const [currentWord, setCurrentWord] = useState('building');
   
-  const words = ['building', 'automating', 'solving', 'creating'];
+  const words = ['building', 'automating', 'solving', 'shipping'];
   const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {

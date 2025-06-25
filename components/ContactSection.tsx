@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import ContactForm from './ContactForm';
+import Link from 'next/link';
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -67,8 +68,12 @@ const ContactSection = () => {
               </button>
               
               <div className="mt-8 space-y-2 text-gray-400">
-                <p>📧 hasnain@example.com</p>
-                <p>🌍 Available worldwide</p>
+                <p>
+                  <Link href="mailto:codewithhasnainbro@gmail.com" referrerPolicy='no-referrer' target="_blank" >
+                  codewithhasnainbro@gmail.com
+                  </Link>
+                  </p>
+                <p>🟢 Available worldwide</p>
                 <p>⚡ Fast response guaranteed</p>
               </div>
             </div>
