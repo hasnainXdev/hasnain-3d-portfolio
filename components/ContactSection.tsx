@@ -31,7 +31,7 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mb-16">
           <div className="order-2 lg:order-1">
             <div className="h-96 flex items-center justify-center">
-              <div className="w-64 h-64 rounded-full border-2 border-white opacity-20 animate-pulse"></div>
+              <div className="w-64 h-64 rounded-full border-2 border-blue bg-gradient-to-tr from-blue-400 to-blue-500 opacity-20 animate-bounce"></div>
             </div>
           </div>
           
