@@ -5,7 +5,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import Lenis from 'lenis';
-// imporfrom '../component;
 import IntroAnimation from '../components/IntroAnimation';
 import HeroSection from '../components/HeroSection';
 import SkillsSection from '../components/SkillsSection';
