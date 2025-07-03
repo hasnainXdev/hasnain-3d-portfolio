@@ -82,9 +82,9 @@ const SkillsSection = () => {
         opacity: 1,
         rotationX: 0,
         z: 0,
-        duration: 1,
+        duration: 0.5,
         stagger: 0.15,
-        ease: "back.out(1.7)",
+        ease: "back.out(1)",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
