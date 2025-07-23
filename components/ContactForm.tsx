@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Input } from '@/components/ui/input';
@@ -17,7 +16,6 @@ const ContactForm = () => {
   });
 
   useEffect(() => {
-    // Animate the 3D code symbol
     if (codeSymbolRef.current) {
       gsap.to(codeSymbolRef.current, {
         rotationY: 360,
@@ -35,7 +33,6 @@ const ContactForm = () => {
       });
     }
 
-    // Animate form entrance
     gsap.fromTo(
       formRef.current,
       { y: 50, opacity: 0 },
@@ -51,10 +48,27 @@ const ContactForm = () => {
     );
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Coming soon! This form will be functional in the future.");
-    setFormData({ name: '', email: '', message: '' });
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        toast.success("Message sent successfully!");
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        toast.error("Failed to send message. Try again later.");
+      }
+    } catch (error) {
+      toast.error("Error sending message.");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -67,9 +81,8 @@ const ContactForm = () => {
   return (
     <div ref={formRef} className="max-w-2xl mx-auto">
       <div className="bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-lg p-8 rounded-2xl border border-gray-700">
-        {/* 3D Code Symbol */}
         <div className="flex justify-center mb-8">
-          <div 
+          <div
             ref={codeSymbolRef}
             className="text-6xl font-mono text-white relative"
             style={{
@@ -79,7 +92,7 @@ const ContactForm = () => {
             }}
           >
             &lt;/&gt;
-            <div 
+            <div
               className="absolute inset-0 text-blue-400 opacity-50"
               style={{
                 transform: 'translateZ(-10px)',
@@ -92,7 +105,7 @@ const ContactForm = () => {
         </div>
 
         <h3 className="text-3xl font-bold text-center mb-6">Let's Connect</h3>
-        
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <Label htmlFor="name" className="text-white mb-2 block">Name</Label>
@@ -106,7 +119,7 @@ const ContactForm = () => {
               placeholder="Your name"
             />
           </div>
-          
+
           <div>
             <Label htmlFor="email" className="text-white mb-2 block">Email</Label>
             <Input
@@ -120,7 +133,7 @@ const ContactForm = () => {
               placeholder="your.email@example.com"
             />
           </div>
-          
+
           <div>
             <Label htmlFor="message" className="text-white mb-2 block">Message</Label>
             <Textarea
@@ -134,7 +147,7 @@ const ContactForm = () => {
               placeholder="Tell me about your project..."
             />
           </div>
-          
+
           <Button
             type="submit"
             className="w-full bg-white text-black px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
