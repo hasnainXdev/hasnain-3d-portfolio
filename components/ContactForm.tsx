@@ -61,7 +61,7 @@ const ContactForm = () => {
 
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/contact`, {
+      const res = await fetch("/api/contact", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
