@@ -53,7 +53,7 @@ const ContactForm = () => {
     e.preventDefault();
 
     if(!formData.name || !formData.email || !formData.message) {
-      toast("All fieilds are required.");
+      toast.info("All fieilds are required.");
       return;
     }
 
@@ -70,12 +70,14 @@ const ContactForm = () => {
       if (res.ok) {
         toast.success("Message sent successfully!");
         setFormData({ name: '', email: '', message: '' });
-      } else {
-        setLoading(false);
-        toast.error("Failed to send message. Try again later.");
+      }
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        toast.error(errorData.message || "Failed to send message.");
       }
     } catch (error) {
-      toast.error("Error sending message.");
+      toast.warning("Error sending message.");
     }finally {
       setLoading(false);
     }
