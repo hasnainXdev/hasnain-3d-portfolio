@@ -1,4 +1,3 @@
-// app/api/contact/route.ts (Next.js 13+)
 import { NextResponse } from 'next/server';
 import { sendMessageViaGmail } from '@/lib/gmail';
 

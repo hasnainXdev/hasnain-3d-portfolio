@@ -14,6 +14,7 @@ const ContactForm = () => {
     email: '',
     message: ''
   });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (codeSymbolRef.current) {
@@ -51,6 +52,7 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    setLoading(true);
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -64,10 +66,13 @@ const ContactForm = () => {
         toast.success("Message sent successfully!");
         setFormData({ name: '', email: '', message: '' });
       } else {
+        setLoading(false);
         toast.error("Failed to send message. Try again later.");
       }
     } catch (error) {
       toast.error("Error sending message.");
+    }finally {
+      setLoading(false);
     }
   };
 
@@ -82,29 +87,9 @@ const ContactForm = () => {
     <div ref={formRef} className="max-w-2xl mx-auto">
       <div className="bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-lg p-8 rounded-2xl border border-gray-700">
         <div className="flex justify-center mb-8">
-          <div
-            ref={codeSymbolRef}
-            className="text-6xl font-mono text-white relative"
-            style={{
-              textShadow: '0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(59,130,246,0.3)',
-              transform: 'perspective(1000px) rotateX(15deg)',
-              transformStyle: 'preserve-3d'
-            }}
-          >
-            &lt;/&gt;
-            <div
-              className="absolute inset-0 text-blue-400 opacity-50"
-              style={{
-                transform: 'translateZ(-10px)',
-                filter: 'blur(2px)'
-              }}
-            >
-              &lt;/&gt;
-            </div>
-          </div>
         </div>
 
-        <h3 className="text-3xl font-bold text-center mb-6">Let's Connect</h3>
+        <h3 className="text-3xl font-bold text-center mb-6">Want a website ?<br /> Contact me</h3>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -149,6 +134,7 @@ const ContactForm = () => {
           </div>
 
           <Button
+          disabled={loading}
             type="submit"
             className="w-full bg-white text-black px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
             onMouseEnter={(e) => {

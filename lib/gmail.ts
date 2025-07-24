@@ -26,10 +26,13 @@ export async function sendMessageViaGmail({ name, email, message }: any) {
     .replace(/\//g, '_')
     .replace(/=+$/, '');
 
-  await gmail.users.messages.send({
-    userId: 'me',
-    requestBody: {
-      raw: encodedMessage,
-    },
-  });
+  try {
+    await gmail.users.messages.send({
+      userId: 'me',
+      requestBody: { raw: encodedMessage },
+    });
+    console.log("✅ Email sent successfully!");
+  } catch (err: any) {
+    console.error("❌ Failed to send email:", err.response?.data || err.message);
+  }
 }
