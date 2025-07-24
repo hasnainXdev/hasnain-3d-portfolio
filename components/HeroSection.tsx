@@ -64,7 +64,7 @@ const HeroSection = () => {
     // Animate floating code elements
     if (floatingElementsRef.current) {
       const elements = floatingElementsRef.current.children;
-      
+
       Array.from(elements).forEach((element, index) => {
         // Random initial position
         gsap.set(element, {
@@ -112,7 +112,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black"></div>
         {/* Brighter spotlight effect */}
-        <div 
+        <div
           ref={spotlightRef}
           className="absolute inset-0 opacity-60"
           style={{
@@ -120,14 +120,14 @@ const HeroSection = () => {
           }}
         ></div>
         {/* Additional brighter moving spotlight */}
-        <div 
+        <div
           className="absolute inset-0 opacity-40 animate-pulse"
           style={{
             background: `radial-gradient(ellipse 800px 500px at 30% 70%, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.15) 30%, rgba(59, 130, 246, 0.05) 50%, transparent 70%)`
           }}
         ></div>
         {/* Extra bright center glow */}
-        <div 
+        <div
           className="absolute inset-0 opacity-20"
           style={{
             background: `radial-gradient(circle 400px at 50% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 60%)`
@@ -150,37 +150,21 @@ const HeroSection = () => {
         <div className="absolute bottom-32 left-1/3 text-orange-400 text-xl font-mono opacity-25">{'&&'}</div>
 
         {/* Tech Symbols */}
-        <div className="absolute top-1/4 left-16 text-blue-500 text-3xl opacity-20">⚛️</div>
         <div className="absolute top-1/3 right-16 text-black text-2xl opacity-25 bg-white rounded px-1">▲</div>
-        <div className="absolute bottom-1/4 left-1/6 text-green-500 text-2xl opacity-20">🐍</div>
         <div className="absolute bottom-1/3 right-1/6 text-purple-500 text-2xl opacity-25">🤖</div>
-
-        {/* Code Snippets */}
-        <div className="absolute top-1/2 left-8 text-gray-400 text-sm font-mono opacity-20 rotate-12">
-          const code = () =<span>{'>'}</span> {'{}'}
-        </div>
-        <div className="absolute bottom-1/2 right-8 text-gray-400 text-sm font-mono opacity-20 -rotate-12">
-          import React from 'react'
-        </div>
-        <div className="absolute top-3/4 left-1/5 text-gray-400 text-xs font-mono opacity-15 rotate-6">
-          bun install
-        </div>
-        <div className="absolute bottom-1/5 right-1/5 text-gray-400 text-xs font-mono opacity-15 -rotate-6">
-          git commit -m
-        </div>
       </div>
-      
-      <div className="text-center z-10 max-w-4xl">
+
+      <div className="text-center z-10 lg:max-w-5xl">
         <h1
           ref={titleRef}
-          className="font-poppins tracking-wide text-3xl md:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
+          className="font-poppins text-xl sm:text-3xl md:text-4xl lg:text-7xl font-bold mb-6 leading-tight lg:tracking-tight"
         >
-          Hi, I'm a Full-Stack Developer<br />and aspiring Founder
+          Hi, I'm a Full-Stack Developer<br /> & aspiring Founder
         </h1>
-        
+
         <p
           ref={subtitleRef}
-          className="font-poppins text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          className="font-poppins text-base md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
         >
           I help startups and clients turn ideas into full-stack reality using{' '}
           <span className="text-white font-semibold border-b-4 pb-0.5 border-red-500">Next.js</span>,{' '}
