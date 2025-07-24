@@ -52,7 +52,7 @@ const SkillsSection = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scrollContainerRef.current) {
+    if (scrollContainerRef.current && window.innerWidth >= 768) {
       const scrollWidth = scrollContainerRef.current.scrollWidth;
       const containerWidth = scrollContainerRef.current.offsetWidth;
 
@@ -146,9 +146,9 @@ const SkillsSection = () => {
           Technical Arsenal
         </h2>
 
-        <div ref={scrollContainerRef} className="flex md:flex-row flex-col space-x-8 w-max">
+        <div ref={scrollContainerRef} className="flex flex-wrap gap-8 justify-center md:justify-start">
           {skills.map((skillGroup, groupIndex) => (
-            <div key={groupIndex} className="flex-shrink-0">
+            <div key={groupIndex} className="flex-shrink-0 w-full sm:w-[300px] px-20 sm:p-0">
               <h3 className="text-2xl font-semibold mb-6 text-gray-300">
                 {skillGroup.category}
               </h3>

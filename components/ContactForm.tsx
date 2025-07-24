@@ -52,6 +52,11 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if(!formData.name || !formData.email || !formData.message) {
+      toast("All fieilds are required.");
+      return;
+    }
+
     setLoading(true);
     try {
       const res = await fetch('/api/contact', {
@@ -99,7 +104,6 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              required
               className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400"
               placeholder="Your name"
             />
@@ -113,7 +117,6 @@ const ContactForm = () => {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              required
               className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400"
               placeholder="your.email@example.com"
             />
@@ -126,7 +129,6 @@ const ContactForm = () => {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              required
               rows={5}
               className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 resize-none"
               placeholder="Tell me about your project..."
