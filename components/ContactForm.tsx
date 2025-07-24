@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Input } from '@/components/ui/input';
@@ -59,7 +61,7 @@ const ContactForm = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
