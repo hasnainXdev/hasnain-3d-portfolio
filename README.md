@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 Hasnain's Developer Portfolio
 
-## Getting Started
+A modern, minimal **developer portfolio** built with the latest tools — designed to showcase full-stack projects, skills, and services with a sleek custom UI.
 
-First, run the development server:
+> Crafted with passion. Built for conversion.
 
+---
+
+## 🚀 Tech Stack
+
+| Frontend | Styling | Components |
+|----------|---------|------------|
+| [Next.js 15+](https://nextjs.org/) | [TailwindCSS](https://tailwindcss.com/) | [ShadCN/UI](https://ui.shadcn.com/) (customized) |
+| [React 18+](https://reactjs.org/) | Responsive Design | Animated Interactions |
+
+---
+
+## 🎨 Features
+
+- ⚡️ **Superfast & SEO-Ready** using App Router (Next.js 15+)
+- 🎯 **Fully Responsive** across all devices
+- ✨ **Custom UI** built on top of ShadCN components
+- 🧩 Modular sections: About, Projects, Services, Contact
+- 📬 Gmail integration (FastAPI backend ready)
+- 📈 Add client testimonials, waitlists, or upcoming products (e.g., PingGenius)
+
+---
+
+## 📁 Folder Structure
+
+#### /app → **Next.js 15 App Router setup**
+
+#### /components → **Reusable and custom UI components**
+
+#### /lib → **Utilities, constants, Gmail integration**
+
+#### /styles → **Tailwind custom styling and theming**
+
+#### /public → **Static assets (images, icons)**
+
+
+
+---
+
+## 🔧 Getting Started
+
+1. **Clone the repo**:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/hasnainXdev/hasnain-3d-portfolio
+
+cd hasnain-portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Install dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### `bun install` OR `or npm install`
 
-## Learn More
+---
+# 🧑‍💻 Author
+#### Built by Hasnain – a 16-year-old Full Stack & AI Developer passionate about building in public.
 
-To learn more about Next.js, take a look at the following resources:
+## Follow Me Here
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🌐 [Portfolio Website](https://hasnixdev.vercel.app)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🐙 [GitHub](https://github.com/hasnainxdev)
 
-## Deploy on Vercel
+📱 [Instagram](https://www.instagram.com/hasnainxdev)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🎥 [TikTok](https://www.tiktok.com/@hasnainxdev)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🧠 [LinkedIn](https://www.linkedin.com/in/hasnaindeveloper/)
+
+🐤 [Twitter (X)](https://www.linkedin.com/in/hasnaindeveloper/)
+
+[Facebook](https://www.facebook.com/hasnainXdev/)
+
+# 📄 License
+#### MIT – free for personal and commercial use.
