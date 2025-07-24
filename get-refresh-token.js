@@ -1,13 +1,14 @@
 const { google } = require("googleapis");
 const readline = require("readline");
 
-const CLIENT_ID = "553666233624-6o82ccoqdse0m6e5udu7i8jskbs9i26j.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
-const REDIRECT_URI = "http://localhost:3000/api/oauth2callback"; // same as in step 4
+const CLIENT_ID = process.env.GMAIL_CLIENT_ID;
+const CLIENT_SECRET = process.env.GMAIL_CLIENT_SECRET;
+const REDIRECT_URI = process.env.GMAIL_REDIRECT_URI; // same as in step 4
 
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
-const SCOPES = ["https://www.googleapis.com/auth/gmail.send"];
+SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.readonly']
+
 
 const authUrl = oAuth2Client.generateAuthUrl({
   access_type: "offline",
