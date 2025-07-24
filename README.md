@@ -2,7 +2,7 @@
 
 A modern, minimal **developer portfolio** built with the latest tools — designed to showcase full-stack projects, skills, and services with a sleek custom UI.
 
-> Crafted with passion. Built for conversion.
+`Crafted with passion. Built for conversion.`
 
 ---
 
