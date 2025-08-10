@@ -28,7 +28,7 @@ const Index = () => {
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.2,
+      wheelMultiplier: 1,
       touchMultiplier: 2,
     });
 

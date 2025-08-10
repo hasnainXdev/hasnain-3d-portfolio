@@ -32,10 +32,12 @@ const ContactSection = () => {
           <div className="order-1 lg:order-2">
             <div
               ref={cardRef}
-              className="bg-gradient-to-br from-[#895AF3] to-[#191330] backdrop-blur-lg p-8 rounded-xl text-center"
+              className="bg-gradient-to-br from-neutral-800 to-neutral-950 backdrop-blur-lg p-8 rounded-xl text-center"
             >
-              <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-widest leading-tight mb-6">
-                Got a Vision?
+              <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-widest leading-relaxed">
+                <span className="bg-clip-text text-transparent bg-gradient-to-br from-white/60 via-white/90 to-white/60">
+                  Got a Vision?
+                </span>
               </h2>
 
               <p className="text-lg font-semibold capitalize text-gray-300 px-14 mb-8 leading-relaxed">

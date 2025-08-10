@@ -94,10 +94,14 @@ const ContactForm = () => {
 
   return (
     <div ref={formRef} className="max-w-2xl mx-auto">
-      <div className="bg-gradient-to-bl from-[#895AF3] to-[#191330] backdrop-blur-lg p-8 rounded-2xl border border-gray-700">
+      <div className="bg-gradient-to-bl from-neutral-800 to-neutral-950 backdrop-blur-lg p-8 rounded-2xl">
         <div className="flex justify-center mb-8">
         </div>
-        <h3 className="text-5xl font-bold text-center mb-6">Want a website...</h3>
+        <h3 className="text-5xl font-bold text-center mb-6">
+          <span className="bg-clip-text text-transparent bg-gradient-to-br from-white/60 via-white/90 to-white/60">
+            Want a website...
+          </span>
+        </h3>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -107,7 +111,7 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="bg-white/80 border-gray-600 text-black/80 cursor-none placeholder:font-semibold placeholder-gray-900"
+              className="bg-white/70 border-gray-600 text-black/80 cursor-none placeholder:font-semibold placeholder-gray-900"
               placeholder="Your name"
             />
           </div>
