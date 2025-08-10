@@ -43,15 +43,15 @@ const PassionSection = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
-          <p ref={textRef} className="text-3xl md:text-5xl font-light leading-relaxed">
+          <p ref={textRef} className="text-3xl md:text-5xl font-medium leading-relaxed">
             I{' '}
-            <span className="font-bold text-white transition-all duration-500">
+            <span className="font-bold text-[#895AF3] transition-all duration-500">
               {currentWord}
             </span>{' '}
-            agentic AI tools and shipping fast SaaS ideas.
+            Agentic AI workflows and shipping fast SaaS ideas.
           </p>
           
-          <div className="mt-12 bg-black/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700">
+          <div className="mt-12 bg-[#895AF3] p-8 rounded-xl border border-gray-700">
             <h3 className="text-2xl font-semibold mb-4">Current Mission</h3>
             <p className="text-gray-300 text-lg leading-relaxed">
               Bridging the gap between complex AI capabilities and real-world business solutions. 

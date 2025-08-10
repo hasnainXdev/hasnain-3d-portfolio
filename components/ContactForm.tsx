@@ -54,7 +54,7 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if(!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email || !formData.message) {
       toast.info("All fieilds are required.");
       return;
     }
@@ -80,7 +80,7 @@ const ContactForm = () => {
       }
     } catch (error) {
       toast.warning("Error sending message.");
-    }finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -97,7 +97,7 @@ const ContactForm = () => {
       <div className="bg-gradient-to-bl from-[#895AF3] to-[#191330] backdrop-blur-lg p-8 rounded-2xl border border-gray-700">
         <div className="flex justify-center mb-8">
         </div>
-        <h3 className="text-3xl font-bold text-center mb-6">Want a website ?<br /> Contact me</h3>
+        <h3 className="text-5xl font-bold text-center mb-6">Want a website...</h3>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -139,7 +139,7 @@ const ContactForm = () => {
           </div>
 
           <Button
-          disabled={loading}
+            disabled={loading}
             type="submit"
             className="w-full bg-white text-black px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
             onMouseEnter={(e) => {
