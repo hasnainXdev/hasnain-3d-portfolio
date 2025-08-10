@@ -18,7 +18,7 @@ const timelineData = [
   {
     quarter: 'Q3',
     title: 'Agentic AI',
-    description: 'Python, OpenAI Agents SDK, chainlit integration.',
+    description: 'Python, OpenAI Agents SDK, Custom Agentic Workflows.',
     status: 'in-progress'
   },
   {
