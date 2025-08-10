@@ -94,10 +94,9 @@ const ContactForm = () => {
 
   return (
     <div ref={formRef} className="max-w-2xl mx-auto">
-      <div className="bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-lg p-8 rounded-2xl border border-gray-700">
+      <div className="bg-gradient-to-bl from-[#895AF3] to-[#191330] backdrop-blur-lg p-8 rounded-2xl border border-gray-700">
         <div className="flex justify-center mb-8">
         </div>
-
         <h3 className="text-3xl font-bold text-center mb-6">Want a website ?<br /> Contact me</h3>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -108,7 +107,7 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400"
+              className="bg-white/80 border-gray-600 text-black/80 cursor-none placeholder:font-semibold placeholder-gray-900"
               placeholder="Your name"
             />
           </div>
@@ -121,8 +120,8 @@ const ContactForm = () => {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400"
-              placeholder="your.email@example.com"
+              className="bg-white/80 border-gray-600 text-black/80 cursor-none placeholder:font-semibold placeholder-gray-900"
+              placeholder="john@example.com"
             />
           </div>
 
@@ -134,7 +133,7 @@ const ContactForm = () => {
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 resize-none"
+              className="bg-white/80 border-gray-600 text-black/80 cursor-none placeholder:font-semibold placeholder-gray-900"
               placeholder="Tell me about your project..."
             />
           </div>
