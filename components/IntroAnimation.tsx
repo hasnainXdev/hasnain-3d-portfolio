@@ -35,7 +35,7 @@ const GlitchText = ({ text, onComplete }: { text: string; onComplete: () => void
   }, [text, onComplete]);
 
   return (
-    <h1 className="text-6xl md:text-8xl font-bold text-center tracking-wider font-mono">
+    <h1 className="text-6xl md:text-8xl font-bold text-center tracking-wider font-[poppins]">
       {displayText}
     </h1>
   );
@@ -68,7 +68,7 @@ const IntroAnimation = () => {
   return (
     <div
       ref={introRef}
-      className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center"
+      className="fixed inset-0 z-50 bg-gradient-to-bl from-[#2f0c6c] to-[#1d0c3b] flex flex-col items-center justify-center"
     >
       <div className="w-full h-full flex flex-col items-center justify-center space-y-8">
         <div className="w-64 h-64 mb-8 flex items-center justify-center">
@@ -79,7 +79,7 @@ const IntroAnimation = () => {
           <div className="text-center space-y-4">
             <GlitchText text="MUHAMMAD HASNAIN" onComplete={handleTextComplete} />
             <p className="text-xl text-gray-400 animate-pulse">
-              Full-Stack Developer & AI Enthusiast
+              Full-Stack Developer & Aspiring Founder
             </p>
           </div>
         )}
