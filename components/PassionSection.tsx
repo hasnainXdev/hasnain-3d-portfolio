@@ -51,7 +51,7 @@ const PassionSection = () => {
             Agentic AI workflows and shipping fast SaaS ideas.
           </p>
           
-          <div className="mt-12 bg-gradient-to-bl from-neutral-700 to-neutral-950 p-8 rounded-xl">
+          <div className="mt-12 bg-gradient-to-bl from-[#7738E0] to-[#2E1E58] p-8 rounded-xl">
             <h3 className="text-2xl font-semibold mb-4">Current Mission</h3>
             <p className="text-gray-300 text-lg leading-relaxed">
               Bridging the gap between complex AI capabilities and real-world business solutions. 

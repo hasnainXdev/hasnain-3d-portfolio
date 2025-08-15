@@ -32,7 +32,7 @@ const ContactSection = () => {
           <div className="order-1 lg:order-2">
             <div
               ref={cardRef}
-              className="bg-gradient-to-br from-neutral-800 to-neutral-950 backdrop-blur-lg p-8 rounded-xl text-center"
+              className="bg-gradient-to-br from-[#7738E0] to-[#2E1E58] backdrop-blur-lg p-8 rounded-xl text-center"
             >
               <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-widest leading-relaxed">
                 <span className="bg-clip-text text-transparent bg-gradient-to-br from-white/60 via-white/90 to-white/60">
@@ -46,7 +46,7 @@ const ContactSection = () => {
               </p>
 
               <button
-                className="bg-white text-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
+                className="bg-white text-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 cursor-none"
                 onMouseEnter={(e) => {
                   gsap.to(e.currentTarget, {
                     boxShadow: "0 20px 40px rgba(255,255,255,0.3)",
