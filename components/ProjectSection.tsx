@@ -131,16 +131,9 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section 
-      ref={sectionRef} 
-      className="py-20"
-      style={{
-        background: "linear-gradient(135deg, #7738E0, #2E1E58)",
-        perspective: '1200px'
-      }}
-    >
+    <section ref={sectionRef} className="py-20" style={{ perspective: '1200px' }}>
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-6xl font-bold text-center mb-16 text-white">
+        <h2 className="text-4xl md:text-6xl font-bold text-center mb-16">
           Featured Projects
         </h2>
         
@@ -148,52 +141,60 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="project-card bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-xl border border-gray-700 hover:border-white transition-all duration-500 hover:shadow-2xl hover:shadow-white/20 cursor-pointer relative"
-              style={{ 
-                transformStyle: 'preserve-3d',
-                backfaceVisibility: 'hidden',
-                transform: 'translateZ(0)'
+              className="project-card bg-gradient-to-br from-[#7738E0] to-[#2E1E58] p-6 rounded-2xl border border-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#7738E0]/40 cursor-pointer relative overflow-hidden"
+              style={{
+                transformStyle: "preserve-3d",
+                backfaceVisibility: "hidden",
+                transform: "translateZ(0)"
               }}
             >
-              <div 
+              {/* Floating showcase image */}
+              <div
                 className="showcase-image absolute top-0 left-0 pointer-events-none z-50 hidden"
-                style={{ transform: 'translateZ(100px)' }}
+                style={{ transform: "translateZ(100px)" }}
               >
-                <Image 
-                  src={project.image} 
+                <Image
+                  src={project.image}
                   alt={project.title}
                   width={600}
                   height={400}
-                  className="w-72 h-48 object-cover rounded-lg shadow-2xl border-2 border-white/20"
+                  className="w-72 h-48 object-cover rounded-lg shadow-2xl border border-white/20"
                 />
               </div>
 
-              <div style={{ transform: 'translateZ(30px)' }}>
-                <h3 className="text-xl font-semibold mb-3 text-white">
+              {/* Title */}
+              <div style={{ transform: "translateZ(30px)" }}>
+                <h3 className="text-xl font-bold mb-3 text-white drop-shadow-lg">
                   {project.title}
                 </h3>
               </div>
-              
-              <div style={{ transform: 'translateZ(20px)' }}>
-                <p className="text-gray-300 mb-4">
+
+              {/* Description */}
+              <div style={{ transform: "translateZ(20px)" }}>
+                <p className="text-gray-100/90 mb-4 leading-relaxed">
                   {project.description}
                 </p>
               </div>
-              
-              <div className="flex flex-wrap gap-2" style={{ transform: 'translateZ(10px)' }}>
+
+              {/* Tech Stack */}
+              <div
+                className="flex flex-wrap gap-2"
+                style={{ transform: "translateZ(10px)" }}
+              >
                 {project.tech.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="bg-gray-800 text-sm px-3 py-1 rounded-full border border-gray-600 hover:border-gray-400 transition-colors"
+                    className="bg-white/10 backdrop-blur-sm text-white text-sm px-3 py-1 rounded-full border border-white/20 hover:bg-white/20 hover:border-white/40 transition-colors"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-              
-              <div 
-                className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-xl pointer-events-none"
-                style={{ transform: 'translateZ(5px)' }}
+
+              {/* Glow overlay */}
+              <div
+                className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl pointer-events-none"
+                style={{ transform: "translateZ(5px)" }}
               />
             </div>
           ))}
