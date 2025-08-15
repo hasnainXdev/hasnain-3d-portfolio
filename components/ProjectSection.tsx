@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image';
@@ -28,7 +27,6 @@ const ProjectsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Initial scroll animation with 3D effects
     gsap.fromTo(
       ".project-card",
       { 
@@ -52,9 +50,8 @@ const ProjectsSection = () => {
       }
     );
 
-    // Add 3D hover interactions to project cards
     const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card, index) => {
+    projectCards.forEach((card) => {
       const element = card as HTMLElement;
       const showcaseImage = element.querySelector('.showcase-image') as HTMLElement;
       
@@ -68,7 +65,6 @@ const ProjectsSection = () => {
           ease: "power2.out"
         });
 
-        // Show showcase image
         if (showcaseImage) {
           gsap.set(showcaseImage, { display: 'block' });
           gsap.fromTo(showcaseImage, 
@@ -88,7 +84,6 @@ const ProjectsSection = () => {
           ease: "power2.out"
         });
 
-        // Hide showcase image
         if (showcaseImage) {
           gsap.to(showcaseImage, {
             y: -50,
@@ -120,10 +115,9 @@ const ProjectsSection = () => {
           ease: "power2.out"
         });
 
-        // Move showcase image to follow mouse
         if (showcaseImage) {
-          const imageX = x - 150; // Offset to center the image
-          const imageY = y - 180; // Position above cursor
+          const imageX = x - 150;
+          const imageY = y - 180;
           
           gsap.to(showcaseImage, {
             x: imageX,
@@ -137,9 +131,16 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20" style={{ perspective: '1200px' }}>
+    <section 
+      ref={sectionRef} 
+      className="py-20"
+      style={{
+        background: "linear-gradient(135deg, #7738E0, #2E1E58)",
+        perspective: '1200px'
+      }}
+    >
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-6xl font-bold text-center mb-16">
+        <h2 className="text-4xl md:text-6xl font-bold text-center mb-16 text-white">
           Featured Projects
         </h2>
         
@@ -154,7 +155,6 @@ const ProjectsSection = () => {
                 transform: 'translateZ(0)'
               }}
             >
-              {/* Showcase Image */}
               <div 
                 className="showcase-image absolute top-0 left-0 pointer-events-none z-50 hidden"
                 style={{ transform: 'translateZ(100px)' }}
@@ -191,7 +191,6 @@ const ProjectsSection = () => {
                 ))}
               </div>
               
-              {/* 3D depth effect overlay */}
               <div 
                 className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-xl pointer-events-none"
                 style={{ transform: 'translateZ(5px)' }}
