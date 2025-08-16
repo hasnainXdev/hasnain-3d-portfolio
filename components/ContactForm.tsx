@@ -98,7 +98,7 @@ const ContactForm = () => {
         <div className="flex justify-center mb-8">
         </div>
         <h3 className="text-5xl font-bold text-center mb-6">
-          <span className="bg-clip-text text-transparent bg-gradient-to-br from-white/60 via-white/90 to-white/60">
+          <span className="bg-clip-text text-transparent border-b-[5px] pb-[1px] border-b-[#7738E0] bg-gradient-to-br from-white/60 via-white/90 to-white/60">
             Want a website...
           </span>
         </h3>
@@ -111,7 +111,18 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="bg-white/70 border-gray-600 text-black/80 cursor-none placeholder:font-semibold placeholder-gray-900"
+              className="
+    bg-white/70 
+    border border-[#7738E0] 
+    text-black/80 
+    cursor-none 
+    placeholder:font-semibold 
+    placeholder-gray-900 
+    focus:border-[#7738E0] 
+    focus:ring-2 
+    focus:ring-[#2E1E58] 
+    focus:outline-none
+  "
               placeholder="Your name"
             />
           </div>
@@ -145,16 +156,16 @@ const ContactForm = () => {
           <Button
             disabled={loading}
             type="submit"
-            className="w-full bg-white text-black px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
+            className="w-full bg-gradient-to-r from-[#7738E0] to-[#2E1E58] text-white px-6 py-3 rounded-lg font-semibold cursor-pointer hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
-                boxShadow: "0 10px 30px rgba(255,255,255,0.3)",
+                boxShadow: "0 10px 30px rgba(119,56,224,0.4)",
                 duration: 0.3
               });
             }}
             onMouseLeave={(e) => {
               gsap.to(e.currentTarget, {
-                boxShadow: "0 0px 0px rgba(255,255,255,0)",
+                boxShadow: "0 0px 0px rgba(119,56,224,0)",
                 duration: 0.3
               });
             }}
