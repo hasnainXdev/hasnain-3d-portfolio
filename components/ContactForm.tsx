@@ -120,7 +120,7 @@ const ContactForm = () => {
     placeholder-gray-900 
     focus:border-[#7738E0] 
     focus:ring-2 
-    focus:ring-[#2E1E58] 
+    focus:ring-[#452596] 
     focus:outline-none
   "
               placeholder="Your name"
@@ -135,7 +135,16 @@ const ContactForm = () => {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="bg-white/80 border-gray-600 text-black/80 cursor-none placeholder:font-semibold placeholder-gray-900"
+              className="  bg-white/70 
+    border border-[#7738E0] 
+    text-black/80 
+    cursor-none 
+    placeholder:font-semibold 
+    placeholder-gray-900 
+    focus:border-[#7738E0] 
+    focus:ring-2 
+    focus:ring-[#452596] 
+    focus:outline-none"
               placeholder="john@example.com"
             />
           </div>
@@ -148,7 +157,16 @@ const ContactForm = () => {
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className="bg-white/80 border-gray-600 text-black/80 cursor-none placeholder:font-semibold placeholder-gray-900"
+              className="  bg-white/70 
+    border border-[#7738E0] 
+    text-black/80 
+    cursor-none 
+    placeholder:font-semibold 
+    placeholder-gray-900 
+    focus:border-[#7738E0] 
+    focus:ring-2 
+    focus:ring-[#452596] 
+    focus:outline-none"
               placeholder="Tell me about your project..."
             />
           </div>
