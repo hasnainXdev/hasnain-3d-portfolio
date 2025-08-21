@@ -5,7 +5,7 @@ import Image from 'next/image';
 const projects = [
   {
     title: "Trakwise - Finance Made Easy",
-    description: "Full-stack application with Next.js, Tailwind CSS, MongoDB, and Clerk, LemmonSqeezy",
+    description: "Full-stack application with Next.js",
     tech: ["Next.js", "MongoDB", "Tailwind CSS", "LemmonSqueezy", "Clerk"],
     image: "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&w=600&h=400"
   },
