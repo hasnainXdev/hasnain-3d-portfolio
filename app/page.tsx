@@ -14,7 +14,6 @@ import PassionSection from '../components/PassionSection';
 import ContactSection from '../components/ContactSection';
 import CustomCursor from '../components/CustomCursor';
 import FloatingElements from '../components/FloatingElements';
-import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -77,4 +76,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Index; 

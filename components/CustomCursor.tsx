@@ -64,12 +64,12 @@ const CustomCursor = () => {
     <>
       <div
         ref={cursorRef}
-        className="fixed w-4 h-4 bg-white rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed w-4 h-4 bg-white rounded-full pointer-events-none z-50"
         style={{ transform: 'translate(-50%, -50%)' }}
       />
       <div
         ref={followerRef}
-        className="fixed w-8 h-8 border border-white rounded-full pointer-events-none z-40 mix-blend-difference"
+        className="fixed w-8 h-8 border border-white rounded-full pointer-events-none z-40"
         style={{ transform: 'translate(-50%, -50%)' }}
       />
     </>
