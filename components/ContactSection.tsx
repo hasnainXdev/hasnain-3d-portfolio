@@ -26,23 +26,23 @@ const ContactSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 relative">
-      <div className="container mx-auto px-4">
+    <section ref={sectionRef} className="py-20 relative overflow-hidden bg-[#111827]" id='contact'>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center max-w-4xl mx-auto mb-16">
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 w-full">
             <div
               ref={cardRef}
-              className="bg-gradient-to-br from-[#7738E0] to-[#2E1E58] backdrop-blur-lg p-8 rounded-xl text-center"
+              className="bg-gradient-to-br from-[#895AF3] to-[#2E1E58] backdrop-blur-xl p-10 rounded-2xl text-center shadow-[0_0_30px_rgba(137,90,243,0.2)]"
             >
-              <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-widest leading-relaxed">
-                <span className="bg-clip-text text-transparent bg-gradient-to-br from-white/60 via-white/90 to-white/60">
+              <h2 className="text-4xl md:text-5xl font-extrabold uppercase tracking-wide leading-relaxed">
+                <span className="bg-clip-text text-transparent bg-gradient-to-br from-white via-white/90 to-white/60">
                   Got a Vision?
                 </span>
               </h2>
 
-              <p className="text-lg font-semibold capitalize text-gray-300 px-14 mb-8 leading-relaxed">
+              <p className="text-lg font-medium text-gray-300 px-10 mt-4 mb-8 leading-relaxed">
                 Whether you need a full-stack web application, AI integration,
-                or SaaS development, I'm here to turn your vision into reality.
+                or SaaS development — I bring your ideas to life with precision and speed.
               </p>
 
               <button
@@ -60,12 +60,17 @@ const ContactSection = () => {
                   });
                 }}
               >
-                Let's build something legendary.
+                Let’s build something legendary.
               </button>
 
-              <div className="mt-8 space-y-2 text-gray-400">
+              <div className="mt-8 space-y-2 text-gray-400 text-sm md:text-base">
                 <p>
-                  <Link href="mailto:codewithhasnainbro@gmail.com" referrerPolicy='no-referrer' target="_blank" >
+                  <Link
+                    href="mailto:codewithhasnainbro@gmail.com"
+                    referrerPolicy="no-referrer"
+                    target="_blank"
+                    className="hover:text-[#895AF3] transition-colors"
+                  >
                     codewithhasnainbro@gmail.com
                   </Link>
                 </p>
@@ -83,8 +88,8 @@ const ContactSection = () => {
       </div>
 
       <footer className="mt-20 text-center text-gray-500 border-t border-gray-800 pt-8">
-        <p className="typewriter">
-          © 2024 Muhammad Hasnain • Crafted with passion and precision
+        <p className="font-light tracking-wide">
+          © 2024 Muhammad Hasnain • Crafted with passion and precision ⚙️
         </p>
       </footer>
     </section>

@@ -36,27 +36,32 @@ const PassionSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black opacity-30"></div>
-      </div>
-      
+  <section
+      ref={sectionRef}
+      className="py-20 relative overflow-hidden bg-[#111827] text-white"
+    >
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
-          <p ref={textRef} className="text-3xl md:text-5xl font-medium leading-relaxed">
-            I{' '}
+          <p
+            ref={textRef}
+            className="text-3xl md:text-5xl font-medium leading-relaxed text-gray-100"
+          >
+            I{" "}
             <span className="font-bold text-[#895AF3] transition-all duration-500">
               {currentWord}
-            </span>{' '}
-            Agentic AI workflows and shipping fast SaaS ideas.
+            </span>{" "}
+            Agentic AI workflows and ship SaaS ideas fast.
           </p>
-          
-          <div className="mt-12 bg-gradient-to-bl from-[#7738E0] to-[#2E1E58] p-8 rounded-xl">
-            <h3 className="text-2xl font-semibold mb-4">Current Mission</h3>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Bridging the gap between complex AI capabilities and real-world business solutions. 
-              Every project is an opportunity to push the boundaries of what's possible with 
-              modern web technologies and artificial intelligence.
+
+          <div className="mt-12 bg-gradient-to-bl from-[#7738E0] to-[#2E1E58] p-8 rounded-2xl border border-white/10 shadow-lg shadow-[#7738E0]/20">
+            <h3 className="text-2xl font-semibold mb-4 text-white">
+              Current Mission
+            </h3>
+            <p className="text-gray-200 text-lg leading-relaxed">
+              Bridging the gap between complex AI capabilities and real-world
+              business solutions. Every project is a step toward creating
+              intelligent systems that work seamlessly with human creativity.
             </p>
           </div>
         </div>

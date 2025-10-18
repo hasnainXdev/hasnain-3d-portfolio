@@ -9,7 +9,7 @@ const GlitchText = ({ text, onComplete }: { text: string; onComplete: () => void
   useEffect(() => {
     const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
     let iteration = 0;
-    
+
     const interval = setInterval(() => {
       setDisplayText(() =>
         text
@@ -68,18 +68,18 @@ const IntroAnimation = () => {
   return (
     <div
       ref={introRef}
-      className="fixed inset-0 z-50 bg-gradient-to-bl from-[#2f0c6c] to-[#1d0c3b] flex flex-col items-center justify-center"
+      className="fixed inset-0 z-50 bg-gradient-to-bl from-[#111827] to-[#111827] flex flex-col items-center justify-center"
     >
       <div className="w-full h-full flex flex-col items-center justify-center space-y-8">
         <div className="w-64 h-64 mb-8 flex items-center justify-center">
           <div className="w-32 h-32 border-2 border-white rounded-full animate-spin"></div>
         </div>
-        
+
         {showText && (
           <div className="text-center space-y-4">
             <GlitchText text="MUHAMMAD HASNAIN" onComplete={handleTextComplete} />
             <p className="text-xl text-gray-400 animate-pulse">
-              Full-Stack Developer & Aspiring Founder
+              Full-Stack Developer & Founder
             </p>
           </div>
         )}

@@ -94,101 +94,126 @@ const ContactForm = () => {
 
   return (
     <div ref={formRef} className="max-w-2xl mx-auto">
-      <div className="bg-gradient-to-bl from-neutral-800 to-neutral-950 backdrop-blur-lg p-8 rounded-2xl">
-        <div className="flex justify-center mb-8">
-        </div>
-        <h3 className="text-5xl font-bold text-center mb-6">
-          <span className="bg-clip-text text-transparent border-b-[5px] pb-[1px] border-b-[#7738E0] bg-gradient-to-br from-white/60 via-white/90 to-white/60">
-            Want a website...
+      <div className="bg-[#0d121d] border border-white/10 backdrop-blur-md p-8 rounded-2xl">
+        <h3 className="text-3xl md:text-5xl tracking-tight font-bold text-center mb-8 text-white">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7738E0] to-[#fff]">
+            Let’s Ship Something 
           </span>
         </h3>
 
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Name */}
           <div>
-            <Label htmlFor="name" className="text-white mb-2 block">Name</Label>
+            <Label htmlFor="name" className="text-gray-200 mb-2 block">
+              Name
+            </Label>
             <Input
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
               className="
-    bg-white/70 
-    border border-[#7738E0] 
-    text-black/80 
-    cursor-none 
-    placeholder:font-semibold 
-    placeholder-gray-900 
-    focus:border-[#7738E0] 
-    focus:ring-2 
-    focus:ring-[#452596] 
-    focus:outline-none
-  "
+                bg-white/10 
+                border border-white/20 
+                text-white 
+                placeholder:text-gray-400 
+                rounded-lg 
+                focus:border-[#7738E0] 
+                focus:ring-2 
+                focus:ring-[#7738E0]/40 
+                transition-all 
+                duration-300
+              "
               placeholder="Your name"
             />
           </div>
 
+          {/* Email */}
           <div>
-            <Label htmlFor="email" className="text-white mb-2 block">Email</Label>
+            <Label htmlFor="email" className="text-gray-200 mb-2 block">
+              Email
+            </Label>
             <Input
               id="email"
               name="email"
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="  bg-white/70 
-    border border-[#7738E0] 
-    text-black/80 
-    cursor-none 
-    placeholder:font-semibold 
-    placeholder-gray-900 
-    focus:border-[#7738E0] 
-    focus:ring-2 
-    focus:ring-[#452596] 
-    focus:outline-none"
+              className="
+                bg-white/10 
+                border border-white/20 
+                text-white 
+                placeholder:text-gray-400 
+                rounded-lg 
+                focus:border-[#7738E0] 
+                focus:ring-2 
+                focus:ring-[#7738E0]/40 
+                transition-all 
+                duration-300
+              "
               placeholder="john@example.com"
             />
           </div>
 
+          {/* Message */}
           <div>
-            <Label htmlFor="message" className="text-white mb-2 block">Message</Label>
+            <Label htmlFor="message" className="text-gray-200 mb-2 block">
+              Message
+            </Label>
             <Textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className="  bg-white/70 
-    border border-[#7738E0] 
-    text-black/80 
-    cursor-none 
-    placeholder:font-semibold 
-    placeholder-gray-900 
-    focus:border-[#7738E0] 
-    focus:ring-2 
-    focus:ring-[#452596] 
-    focus:outline-none"
+              className="
+                bg-white/10 
+                border border-white/20 
+                text-white 
+                placeholder:text-gray-400 
+                rounded-lg 
+                focus:border-[#7738E0] 
+                focus:ring-2 
+                focus:ring-[#7738E0]/40 
+                transition-all 
+                duration-300
+              "
               placeholder="Tell me about your project..."
             />
           </div>
 
+          {/* Submit */}
           <Button
             disabled={loading}
             type="submit"
-            className="w-full bg-gradient-to-r from-[#7738E0] to-[#2E1E58] text-white px-6 py-3 rounded-lg font-semibold cursor-pointer hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg"
+            className="
+              w-full 
+              bg-gradient-to-r from-[#7738E0] to-[#7738E0]/50 
+              text-white 
+              px-6 py-3 
+              rounded-lg 
+              font-semibold 
+              hover:opacity-90 
+              transition-all 
+              duration-300 
+              transform 
+              hover:scale-105
+              mt-8
+            "
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
-                boxShadow: "0 10px 30px rgba(119,56,224,0.4)",
-                duration: 0.3
+                scale: 1.05,
+                duration: 0.2,
               });
             }}
             onMouseLeave={(e) => {
               gsap.to(e.currentTarget, {
-                boxShadow: "0 0px 0px rgba(119,56,224,0)",
-                duration: 0.3
+                scale: 1,
+                duration: 0.2,
               });
             }}
           >
-            Send Message
+            {loading ? "Sending..." : "Send Email"}
           </Button>
         </form>
       </div>

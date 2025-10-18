@@ -139,63 +139,65 @@ const SkillsSection = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-20 bg-gradient-to-bl from-[#7434E0] to-[#0F0F1B] overflow-hidden font-[poppins]"
-      style={{ perspective: '1200px' }}
-    >
-      <div className="container mx-auto md:px-4 p-0">
-        
-        {/* Main Title with Gradient */}
-        <h2 className="text-4xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-gray-200 via-white to-purple-200 bg-clip-text text-transparent drop-shadow-lg">
-          Technical Skills
-        </h2>
+    (
+      <section
+        ref={sectionRef}
+        className="py-20 bg-[#111827] text-white overflow-hidden font-[Poppins]"
+        style={{ perspective: "1200px" }}
+      >
+        <div className="container mx-auto px-4">
+          {/* Title */}
+          <h2 className="text-4xl md:text-6xl font-extrabold text-center mb-16 bg-gradient-to-r from-[#7738E0] to-white bg-clip-text text-transparent">
+            Technical Skills
+          </h2>
 
-        <div ref={scrollContainerRef} className="flex flex-wrap gap-8 justify-center md:justify-start">
-          {skills.map((skillGroup, groupIndex) => (
-            <div key={groupIndex} className="flex-shrink-0 w-full sm:w-[300px] px-20 sm:p-0">
-              
-              {/* Category Title */}
-              <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-purple-300 via-purple-100 to-purple-400 bg-clip-text text-transparent">
-                {skillGroup.category}
-              </h3>
+          <div
+            ref={scrollContainerRef}
+            className="flex flex-wrap gap-8 justify-center md:justify-start"
+          >
+            {skills.map((skillGroup, groupIndex) => (
+              <div key={groupIndex} className="flex-shrink-0 w-full sm:w-[300px]">
+                {/* Category */}
+                <h3 className="text-2xl font-semibold mb-6 text-[#B57CFF] border-l-4 border-[#7738E0] pl-3">
+                  {skillGroup.category}
+                </h3>
 
-              <div className="space-y-4">
-                {skillGroup.items.map((skill, index) => (
-                  <div
-                    key={index}
-                    className="skill-item px-6 py-4 rounded-lg border border-gray-700/40 bg-white/5 backdrop-blur-lg hover:border-purple-400/60 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 cursor-none flex items-center space-x-4"
-                    style={{
-                      transformStyle: 'preserve-3d',
-                      backfaceVisibility: 'hidden',
-                      transform: 'translateZ(0)'
-                    }}
-                  >
+                <div className="space-y-4">
+                  {skillGroup.items.map((skill, index) => (
                     <div
-                      className="text-2xl font-bold flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full"
+                      key={index}
+                      className="skill-item px-6 py-4 rounded-xl border border-[#7738E0]/20 bg-[#1A1F2E] hover:bg-[#7738E0]/10 transition-all duration-300 hover:shadow-lg flex items-center space-x-4"
                       style={{
-                        background: `radial-gradient(circle at center, ${skill.color}30, transparent)`,
-                        color: skill.color,
-                        textShadow: `0 0 15px ${skill.color}70`,
-                        transform: 'translateZ(20px)'
+                        transformStyle: "preserve-3d",
+                        backfaceVisibility: "hidden",
+                        transform: "translateZ(0)",
                       }}
                     >
-                      {skill.logo}
+                      <div
+                        className="text-2xl font-bold flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full"
+                        style={{
+                          background: `radial-gradient(circle at center, ${skill.color}20, transparent)`,
+                          color: skill.color,
+                          transform: "translateZ(20px)",
+                        }}
+                      >
+                        {skill.logo}
+                      </div>
+                      <span
+                        className="text-lg font-medium"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        {skill.name}
+                      </span>
                     </div>
-                    <span
-                      className="text-lg font-medium text-gray-200"
-                      style={{ transform: 'translateZ(10px)' }}
-                    >
-                      {skill.name}
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )
   );
 };
 
