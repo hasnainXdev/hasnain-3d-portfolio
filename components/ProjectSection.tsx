@@ -1,85 +1,90 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import Image from 'next/image';
-import { ExternalLink } from 'lucide-react';
-import Link from 'next/link';
-import { projects } from '@/app/constants';
+import { useFadeUp } from "@/hooks/useFadeUp";
+import { ExternalLink, Github } from "lucide-react";
+import Link from "next/link";
 
-const ProjectsSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+const projects = [
+  {
+    title: "SaaSJet Nextjs Kit",
+    description:
+      "A lean, prod-ready open-source SaaS starter that lets you launch your idea in days, not weeks built with modern tools, minimal overhead, and real-world priorities in mind.",
+    tags: ["Next", "Shadcn", "Node.js", "Stripe", "Prisma", "BetterAuth"],
+    live: "https://github.com/hasnainXdev/saasjet",
+    github: "#",
+  },
+  {
+    title: "Comforty Farniture Store",
+    description:
+      "Comforty is a fully functional e-commerce marketplace targeting the furniture market. This platform specializes in selling sofas, tables, beds, and other furniture-related items, offering a seamless shopping experience to users.",
+    tags: ["Next.js", "Stripe", "Sanity", "Tailwind", "MongoDB", "Webhooks"],
+    live: "uiux-hackathon-2024.vercel.app",
+    github: "#",
+  },
+  {
+    title: "Coming Soon",
+    description:
+      "more projects are on the way! Stay tuned for updates as I continue to build and share exciting new projects in the near future.",
+    tags: ["N/A"],
+    live: "#",
+    github: "#",
+  },
+];
 
-  useEffect(() => {
-    gsap.fromTo(
-      ".project-card",
-      {
-        y: 100,
-        opacity: 0,
-        scale: 0.8
-      },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        }
-      }
-    );
-
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card) => {
-      const element = card as HTMLElement;
-
-      element.addEventListener('mouseenter', () => {
-        gsap.to(element, {
-          scale: 1.05,
-          duration: 0.4,
-          ease: "power2.out"
-        });
-      });
-
-      element.addEventListener('mouseleave', () => {
-        gsap.to(element, {
-          scale: 1,
-          duration: 0.4,
-          ease: "power2.out"
-        });
-      });
-    });
-  }, []);
+const Projects = () => {
+  const ref = useFadeUp();
 
   return (
-    <section
-      ref={sectionRef}
-      id='projects'
-      className="py-20 bg-[#111827] text-white min-h-screen"
-    >
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-6xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-[#7738E0] to-[#FFFFFF]">
-          Featured Projects
+    <section id="projects" className="py-24">
+      <div ref={ref} className="container mx-auto px-6 fade-up">
+        <h2 className="font-display text-3xl sm:text-4xl font-bold text-center mb-4">
+          Featured <span className="text-gradient">Projects</span>
         </h2>
+        <p className="text-muted-foreground text-center max-w-lg mx-auto mb-14">
+          A selection of recent work from SaaS platforms to AI tools.
+        </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {projects.map((project, index) => (
-            <Link
-              href={`/projects/${project.slug}`}
-              key={index}
-              className="project-card relative overflow-hidden rounded-2xl cursor-pointer block"
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((p, i) => (
+            <div
+              key={p.title}
+              className="group relative rounded-xl border border-border bg-card overflow-hidden hover:border-primary/60 transition-all duration-300"
+              style={{ animationDelay: `${i * 0.1}s` }}
             >
-              {/* Image Container */}
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-500 hover:scale-105"
-                />
+              {/* Gradient top accent */}
+              <div className="h-1 w-full bg-gradient-to-r from-primary to-primary/50" />
+
+              <div className="p-6 space-y-4">
+                <h3 className="font-display text-lg font-semibold text-foreground">
+                  {p.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {p.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2 py-0.5 rounded-md bg-secondary text-xs text-muted-foreground hover:text-gray-300 transition-colors ease-in duration-100 cursor-pointer"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-3 pt-2">
+                  <Link
+                    href={p.live}
+                    className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                  >
+                    <ExternalLink size={14} /> Learn More
+                  </Link>
+                  {/* <Link
+                    href={p.github}
+                    className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <Github size={14} /> Code
+                  </Link> */}
+                </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
@@ -87,4 +92,4 @@ const ProjectsSection = () => {
   );
 };
 
-export default ProjectsSection;
+export default Projects;

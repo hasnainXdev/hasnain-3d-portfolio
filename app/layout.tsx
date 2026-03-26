@@ -3,6 +3,9 @@ import { Caveat, Poppins } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "sonner";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,7 +29,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} ${caveat.variable} antialiased`}>
         <Toaster />
-        {children}
+        <Navbar />
+        <TooltipProvider>
+          {children}
+        </TooltipProvider>
+        <Footer />
         <Analytics />
       </body>
     </html>
