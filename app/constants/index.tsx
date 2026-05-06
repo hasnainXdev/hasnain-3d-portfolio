@@ -1,78 +1,125 @@
 export const projectsData = {
-    'trakwise': {
-        id: 'trakwise',
-        title: "Trakwise - Finance Made Easy",
-        tagline: "Your Personal Finance Companion",
-        description: "Full-stack application with Next.js",
-        fullDescription: "Trakwise is a comprehensive finance management platform that helps users track expenses, manage budgets, and gain insights into their spending patterns. Built with modern technologies for optimal performance and user experience.",
-        tech: ["Next.js", "MongoDB", "Tailwind CSS", "LemmonSqueezy", "Clerk"],
-        image: "/trakwise-project.png",
-        mockups: ["/trakwise-project.png", "/trakwise-project.png", "/trakwise-project.png"],
-        link: "https://trakwise.vercel.app",
-        github: "https://github.com/yourusername/trakwise",
+    'pinggenius-backend': {
+        id: 'pinggenius-backend',
+        title: "PingGenius Backend",
+        tagline: "AI-Assisted LinkedIn Outreach Engine",
+        description: "Production-ready FastAPI backend for hyper-personalized, guarded LinkedIn DMs.",
+        fullDescription: "PingGenius is a robust, production-ready FastAPI backend tailored for automated yet carefully guarded LinkedIn outreach. It transforms raw profile data into context-aware connection notes, direct messages, and custom follow-up sequences. The system enforces strict deterministic output controls, rate-limiting, idempotency keys, and GDPR-compliant data processing, all governed by a mandatory human-in-the-loop flow to guarantee no message is dispatched without manual review.",
+        tech: ["FastAPI", "Python", "Pydantic", "OpenAI API", "Redis", "PostgreSQL"],
+        image: "/pinggenius-backend.png",
+        mockups: ["/pinggenius-backend.png", "/pinggenius-backend.png", "/pinggenius-backend.png"],
+        link: "https://github.com/yourusername/pinggenius_backend",
+        github: "https://github.com/yourusername/pinggenius_backend",
         features: [
-            "Real-time expense tracking",
-            "Budget management and alerts",
-            "Visual analytics and reports",
-            "Secure authentication with Clerk",
-            "Payment processing integration"
+            "AI-powered generation of connection notes, DMs, and follow-ups",
+            "Strict hallucination guards with deterministic output handling",
+            "Idempotency keys, API timeouts, and robust rate limiting",
+            "GDPR-minded processing of sensitive profile details",
+            "Human-in-the-loop approval workflow to prevent accidental auto-sending"
         ],
-        color: "#10B981"
+        color: "#2563EB"
     },
-    'furniture-store': {
-        id: 'furniture-store',
-        title: "Farniture E-Store + CMS",
-        tagline: "Modern E-Commerce Excellence",
-        description: "Modern e-store with payment processing and inventory management",
-        fullDescription: "A fully-featured e-commerce platform with integrated CMS capabilities. Features include real-time inventory management, secure payment processing, and an intuitive admin dashboard for complete control.",
-        tech: ["Next.js", "Tailwind CSS", "NextAuth", "Sanity.io", "Stripe"],
+    'saasjet': {
+        id: 'saasjet',
+        title: "SaaSJet Boilerplate",
+        tagline: "Lean SaaS Starter Kit for Solo Founders",
+        description: "An unopinionated open-source boilerplate to launch fast without enterprise bloat.",
+        fullDescription: "SaaSJet is a minimalist, open-source SaaS starter kit designed specifically for solo developers and indie hackers. It provides a complete, modern baseline for web applications without forcing unnecessary abstractions. Features include standard authentication, Prisma ORM with PostgreSQL, a sleek user dashboard, built-in Stripe subscriptions/billing workflows, and a streamlined API structure.",
+        tech: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS", "NextAuth"],
+        image: "/saasjet.png",
+        mockups: ["/saasjet.png", "/saasjet.png", "/saasjet.png"],
+        link: "https://github.com/yourusername/saasjet",
+        github: "https://github.com/yourusername/saasjet",
+        features: [
+            "Lightweight foundation with minimal enterprise complexity",
+            "Ready-to-use authentication and secure user routing",
+            "Pre-configured Prisma ORM mapped to PostgreSQL schemas",
+            "Seamless Stripe subscription plans and customer portal billing",
+            "Clean dashboard UI without upsells or paywalled features"
+        ],
+        color: "#EC4899"
+    },
+    'todo-spec-driven': {
+        id: 'todo-spec-driven',
+        title: "Spec-Driven Todo Evolution",
+        tagline: "Multi-Phase Cloud-Native Roadmap",
+        description: "A progressive todo application evolving across five architectural phases.",
+        fullDescription: "This project serves as an evolutionary architectural blueprint, demonstrating a todo application growing across five distinct development phases: an in-memory Python console app, a modern full-stack web application with Next.js/FastAPI/SQLModel/Neon, an AI-powered todo chatbot leveraging OpenAI agents, a local Kubernetes container deployment, and a cloud-native event-driven system leveraging Kafka, Dapr, and DigitalOcean Kubernetes.",
+        tech: ["Next.js", "FastAPI", "SQLModel", "OpenAI SDK", "Kafka", "Dapr", "Kubernetes", "Neon"],
+        image: "/todo-spec-driven.png",
+        mockups: ["/todo-spec-driven.png", "/todo-spec-driven.png", "/todo-spec-driven.png"],
+        link: "https://github.com/yourusername/Hackathon-II-Todo-Spec-Driven",
+        github: "https://github.com/yourusername/Hackathon-II-Todo-Spec-Driven",
+        features: [
+            "Phase-based evolution from a simple CLI app to a microservices architecture",
+            "Full-stack implementation using Next.js, FastAPI, SQLModel, and Neon Serverless Postgres",
+            "Intelligent Todo AI Agent integrating advanced OpenAI tool-calling capabilities",
+            "Local containerization and deployment orchestration with Kubernetes",
+            "Advanced event-driven orchestration layer utilizing Kafka and Dapr"
+        ],
+        color: "#F59E0B"
+    },
+    'comforty': {
+        id: 'comforty',
+        title: "Comforty - Furniture Marketplace",
+        tagline: "Elegant E-Commerce & CMS Platform",
+        description: "A specialized furniture e-commerce platform and schema-driven CMS implementation.",
+        fullDescription: "Comforty is a furniture-focused e-commerce marketplace highlighting custom-architected database schemas and Sanity CMS integration. The project showcases robust schema modeling for users, shipping zones, categories, discount coupons, and item catalogs, supported by backend endpoints for product details, authentication, and order handling.",
+        tech: ["Next.js", "Tailwind CSS", "Sanity.io", "Stripe", "NextAuth", "TypeScript"],
         image: "/furniture-store.png",
         mockups: ["/furniture-store.png", "/furniture-store.png", "/furniture-store.png"],
         link: "https://uiux-hackathon-2024.vercel.app",
-        github: "https://github.com/yourusername/furniture-store",
+        github: "https://github.com/yourusername/Comforty",
         features: [
-            "Complete CMS with Sanity.io",
-            "Stripe payment integration",
-            "Admin dashboard",
-            "Product catalog management",
-            "Order tracking system"
+            "Custom database schemas designed for products, categories, coupons, and orders",
+            "Seamless headless content management using Sanity CMS",
+            "Structured API routes for fast product catalog delivery and checkout processing",
+            "Fully functional dynamic shopping cart with modern UI elements",
+            "Extensible scaffolding for payment gateway and shipping integrations"
         ],
         color: "#7738E0"
     },
-    'ai-assistant': {
-        id: 'ai-assistant',
-        title: "AI Assistant Agents - Chatbot",
-        tagline: "Intelligent Conversation Platform",
-        description: "Real-time chat application with AI-powered responses",
-        fullDescription: "An advanced AI chatbot built with OpenAI's Agents SDK, providing intelligent, context-aware responses in real-time. Features natural language processing and seamless user interactions.",
-        tech: ["Python", "OpenAI Agents SDK", "Streamlit"],
-        image: "/personal-assistant.png",
-        mockups: ["/personal-assistant.png", "/personal-assistant.png", "/personal-assistant.png"],
-        link: "https://github.com/hasnainXdev/personal-aiagent",
-        github: "https://github.com/hasnainXdev/personal-aiagent",
+    'shoprr': {
+        id: 'shoprr',
+        title: "Shoprr Storefront",
+        tagline: "Modern High-Performance Shopping Experience",
+        description: "A sleek, consumer-oriented storefront powered by Clerk, Stripe, and Sanity.",
+        fullDescription: "Shoprr is a modern e-commerce storefront designed for fast page loads and high conversions. Built with a modern tech stack containing Next.js, React, and Tailwind CSS, it integrates Clerk for user authentication, Stripe for payment processing, Sanity for inventory content management, and MongoDB with Redux Toolkit for clean client state management.",
+        tech: ["Next.js", "React", "Clerk", "Stripe", "Sanity.io", "MongoDB", "Redux Toolkit", "Zod"],
+        image: "/shoprr.png",
+        mockups: ["/shoprr.png", "/shoprr.png", "/shoprr.png"],
+        link: "https://github.com/yourusername/ecommerce-shop-build",
+        github: "https://github.com/yourusername/ecommerce-shop-build",
         features: [
-            "AI-powered responses",
-            "Real-time chat interface",
-            "Context-aware conversations",
-            "Multi-turn dialogue support",
-            "Streamlit UI framework"
+            "Highly interactive UI built with React, Tailwind CSS, and shadcn/ui",
+            "Seamless third-party identity management and social logins with Clerk",
+            "Secure payment routing and checkout handling via Stripe",
+            "Global client-side state management using Redux Toolkit",
+            "Robust runtime API data validation using Zod schemas"
         ],
-        color: "#3B82F6"
+        color: "#10B981"
     }
 };
 
-
 export const projects = [
   {
-    ...projectsData['trakwise'],
-    slug: 'trakwise'
+    ...projectsData['pinggenius-backend'],
+    slug: 'pinggenius-backend'
   },
   {
-    ...projectsData['furniture-store'],
-    slug: 'furniture-store'
+    ...projectsData['saasjet'],
+    slug: 'saasjet'
   },
   {
-    ...projectsData['ai-assistant'],
-    slug: 'ai-assistant'
+    ...projectsData['todo-spec-driven'],
+    slug: 'todo-spec-driven'
+  },
+  {
+    ...projectsData['comforty'],
+    slug: 'comforty'
+  },
+  {
+    ...projectsData['shoprr'],
+    slug: 'shoprr'
   }
 ];

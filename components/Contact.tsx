@@ -32,7 +32,7 @@ const Contact = () => {
         <div className="max-w-2xl mx-auto grid sm:grid-cols-2 gap-4">
           {/* Email card */}
           <Link
-            href="mailto:hasnaindev@example.com"
+            href="mailto:hasnain.codes0@gmail.com"
             className="col-span-full rounded-xl border border-border bg-card p-6 hover:border-primary/40 transition-all duration-300 flex items-center gap-4 group"
           >
             <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
@@ -40,7 +40,7 @@ const Contact = () => {
             </div>
             <div>
               <p className="font-display font-semibold text-foreground">
-                codewithhasnainbro@gmail.com
+                hasnain.codes0@gmail.com
               </p>
               <p className="text-xs text-muted-foreground">
                 Click to send an email
