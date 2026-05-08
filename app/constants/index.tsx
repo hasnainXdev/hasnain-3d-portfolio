@@ -1,24 +1,24 @@
 export const projectsData = {
-    'pinggenius-backend': {
-        id: 'pinggenius-backend',
-        title: "PingGenius Backend",
-        tagline: "AI-Assisted LinkedIn Outreach Engine",
-        description: "Production-ready FastAPI backend for hyper-personalized, guarded LinkedIn DMs.",
-        fullDescription: "PingGenius is a robust, production-ready FastAPI backend tailored for automated yet carefully guarded LinkedIn outreach. It transforms raw profile data into context-aware connection notes, direct messages, and custom follow-up sequences. The system enforces strict deterministic output controls, rate-limiting, idempotency keys, and GDPR-compliant data processing, all governed by a mandatory human-in-the-loop flow to guarantee no message is dispatched without manual review.",
-        tech: ["FastAPI", "Python", "Pydantic", "OpenAI API", "Redis", "PostgreSQL"],
-        image: "/pinggenius-backend.png",
-        mockups: ["/pinggenius-backend.png", "/pinggenius-backend.png", "/pinggenius-backend.png"],
-        link: "https://github.com/yourusername/pinggenius_backend",
-        github: "https://github.com/yourusername/pinggenius_backend",
-        features: [
-            "AI-powered generation of connection notes, DMs, and follow-ups",
-            "Strict hallucination guards with deterministic output handling",
-            "Idempotency keys, API timeouts, and robust rate limiting",
-            "GDPR-minded processing of sensitive profile details",
-            "Human-in-the-loop approval workflow to prevent accidental auto-sending"
-        ],
-        color: "#2563EB"
-    },
+    // 'pinggenius-backend': {
+    //     id: 'pinggenius-backend',
+    //     title: "PingGenius Backend",
+    //     tagline: "AI-Assisted LinkedIn Outreach Engine",
+    //     description: "Production-ready FastAPI backend for hyper-personalized, guarded LinkedIn DMs.",
+    //     fullDescription: "PingGenius is a robust, production-ready FastAPI backend tailored for automated yet carefully guarded LinkedIn outreach. It transforms raw profile data into context-aware connection notes, direct messages, and custom follow-up sequences. The system enforces strict deterministic output controls, rate-limiting, idempotency keys, and GDPR-compliant data processing, all governed by a mandatory human-in-the-loop flow to guarantee no message is dispatched without manual review.",
+    //     tech: ["FastAPI", "Python", "Pydantic", "OpenAI API", "Redis", "PostgreSQL"],
+    //     image: "/pinggenius-backend.png",
+    //     mockups: ["/pinggenius-backend.png", "/pinggenius-backend.png", "/pinggenius-backend.png"],
+    //     link: "https://github.com/hasnainxdev/pinggenius_backend",
+    //     github: "https://github.com/hasnainxdev/pinggenius_backend",
+    //     features: [
+    //         "AI-powered generation of connection notes, DMs, and follow-ups",
+    //         "Strict hallucination guards with deterministic output handling",
+    //         "Idempotency keys, API timeouts, and robust rate limiting",
+    //         "GDPR-minded processing of sensitive profile details",
+    //         "Human-in-the-loop approval workflow to prevent accidental auto-sending"
+    //     ],
+    //     color: "#2563EB"
+    // },
     'saasjet': {
         id: 'saasjet',
         title: "SaaSJet Boilerplate",
@@ -28,8 +28,8 @@ export const projectsData = {
         tech: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS", "NextAuth"],
         image: "/saasjet.png",
         mockups: ["/saasjet.png", "/saasjet.png", "/saasjet.png"],
-        link: "https://github.com/yourusername/saasjet",
-        github: "https://github.com/yourusername/saasjet",
+        link: "https://github.com/hasnainxdev/saasjet",
+        github: "https://github.com/hasnainxdev/saasjet",
         features: [
             "Lightweight foundation with minimal enterprise complexity",
             "Ready-to-use authentication and secure user routing",
@@ -48,8 +48,8 @@ export const projectsData = {
         tech: ["Next.js", "FastAPI", "SQLModel", "OpenAI SDK", "Kafka", "Dapr", "Kubernetes", "Neon"],
         image: "/todo-spec-driven.png",
         mockups: ["/todo-spec-driven.png", "/todo-spec-driven.png", "/todo-spec-driven.png"],
-        link: "https://github.com/yourusername/Hackathon-II-Todo-Spec-Driven",
-        github: "https://github.com/yourusername/Hackathon-II-Todo-Spec-Driven",
+        link: "https://github.com/hasnainxdev/Hackathon-II-Todo-Spec-Driven",
+        github: "https://github.com/hasnainxdev/Hackathon-II-Todo-Spec-Driven",
         features: [
             "Phase-based evolution from a simple CLI app to a microservices architecture",
             "Full-stack implementation using Next.js, FastAPI, SQLModel, and Neon Serverless Postgres",
@@ -69,7 +69,7 @@ export const projectsData = {
         image: "/furniture-store.png",
         mockups: ["/furniture-store.png", "/furniture-store.png", "/furniture-store.png"],
         link: "https://uiux-hackathon-2024.vercel.app",
-        github: "https://github.com/yourusername/Comforty",
+        github: "https://github.com/hasnainxdev/Comforty",
         features: [
             "Custom database schemas designed for products, categories, coupons, and orders",
             "Seamless headless content management using Sanity CMS",
@@ -88,8 +88,8 @@ export const projectsData = {
         tech: ["Next.js", "React", "Clerk", "Stripe", "Sanity.io", "MongoDB", "Redux Toolkit", "Zod"],
         image: "/shoprr.png",
         mockups: ["/shoprr.png", "/shoprr.png", "/shoprr.png"],
-        link: "https://github.com/yourusername/ecommerce-shop-build",
-        github: "https://github.com/yourusername/ecommerce-shop-build",
+        link: "https://github.com/hasnainxdev/ecommerce-shop-build",
+        github: "https://github.com/hasnainxdev/ecommerce-shop-build",
         features: [
             "Highly interactive UI built with React, Tailwind CSS, and shadcn/ui",
             "Seamless third-party identity management and social logins with Clerk",
@@ -102,10 +102,10 @@ export const projectsData = {
 };
 
 export const projects = [
-  {
-    ...projectsData['pinggenius-backend'],
-    slug: 'pinggenius-backend'
-  },
+//   {
+//     ...projectsData['pinggenius-backend'],
+//     slug: 'pinggenius-backend'
+//   },
   {
     ...projectsData['saasjet'],
     slug: 'saasjet'
