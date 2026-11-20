@@ -1,24 +1,19 @@
 "use client";
 
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TextPlugin } from 'gsap/TextPlugin';
-import HeroSection from '../components/HeroSection';
-import ServicesSection from '../components/ServicesSection';
-import SkillsSection from '../components/SkillsSection';
-import ProjectsSection from '../components/ProjectSection';
-import Contact from '@/components/Contact';
+import HeroSection from "../components/HeroSection";
+import ServicesSection from "../components/ServicesSection";
+import SkillsSection from "../components/SkillsSection";
+import ProjectsSection from "../components/ProjectSection";
+import Contact from "@/components/Contact";
 
-const Home = () => {
+const Home = () => (
+  <>
+    <HeroSection />
+    <ServicesSection />
+    <SkillsSection />
+    <ProjectsSection />
+    <Contact />
+  </>
+);
 
-  return (
-    <>
-      <HeroSection />
-      <ServicesSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <Contact />
-    </>
-  );
-};
-
-export default Home; 
+export default Home;

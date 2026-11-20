@@ -1,85 +1,85 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 const navLinks = [
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
-    const [scrolled, setScrolled] = useState(false);
-    const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 40);
-        window.addEventListener("scroll", onScroll);
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    const handleClick = (href: string) => {
-        setMobileOpen(false);
-        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    };
+  const handleClick = (href: string) => {
+    setMobileOpen(false);
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+  };
 
-    return (
-        <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass shadow-lg" : "bg-transparent"
-                }`}
+  return (
+    <nav
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-150 ${
+        scrolled ? "border-border bg-background/95" : "border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-6 lg:px-8">
+        <Link href="/" className="text-base font-medium text-foreground">
+          Hasnain
+        </Link>
+
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <button
+              key={link.href}
+              onClick={() => handleClick(link.href)}
+              className="text-sm text-secondary-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              {link.label}
+            </button>
+          ))}
+          <button
+            onClick={() => handleClick("#contact")}
+            className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors duration-150 hover:bg-[#0b6b5b]"
+          >
+            Hire me
+          </button>
+        </div>
+
+        <button
+          type="button"
+          className="text-foreground md:hidden"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen(!mobileOpen)}
         >
-            <div className="container mx-auto flex items-center justify-between h-16 px-6">
-                <Link href="/" className="text-xl font-bold tracking-tight font-sans text-center mb-0 text-white">
-                    Hasnain<span className="text-gradient"> .</span>
-                </Link>
+          {mobileOpen ? <X size={18} strokeWidth={1.5} /> : <Menu size={18} strokeWidth={1.5} />}
+        </button>
+      </div>
 
-                {/* Desktop */}
-                <div className="hidden md:flex items-center gap-8">
-                    {navLinks.map((l) => (
-                        <button
-                            key={l.href}
-                            onClick={() => handleClick(l.href)}
-                            className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                        >
-                            {l.label}
-                        </button>
-                    ))}
-                    <button
-                        onClick={() => handleClick("#contact")}
-                        className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors cursor-pointer"
-                    >
-                        Hire Me
-                    </button>
-                </div>
-
-                {/* Mobile toggle */}
-                <button
-                    className="md:hidden text-foreground cursor-pointer"
-                    onClick={() => setMobileOpen(!mobileOpen)}
-                >
-                    {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-            </div>
-
-            {/* Mobile menu */}
-            {mobileOpen && (
-                <div className="md:hidden glass border-t border-border/50 px-6 py-4 space-y-3">
-                    {navLinks.map((l) => (
-                        <button
-                            key={l.href}
-                            onClick={() => handleClick(l.href)}
-                            className="block w-full text-left text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                        >
-                            {l.label}
-                        </button>
-                    ))}
-                </div>
-            )}
-        </nav>
-    );
+      {mobileOpen && (
+        <div className="menu-in border-t border-border bg-background px-6 py-4 md:hidden">
+          {navLinks.map((link) => (
+            <button
+              key={link.href}
+              onClick={() => handleClick(link.href)}
+              className="block w-full py-2 text-start text-sm text-secondary-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              {link.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </nav>
+  );
 };
 
 export default Navbar;

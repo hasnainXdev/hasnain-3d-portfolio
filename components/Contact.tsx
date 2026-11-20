@@ -1,37 +1,37 @@
 "use client";
+
 import { useFadeUp } from "@/hooks/useFadeUp";
-import { Calendar, Mail, Github } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { ArrowUpRight, Calendar, Github, Mail, MessageCircle } from "lucide-react";
 import Link from "next/link";
+
+const primary = {
+  icon: Calendar,
+  title: "Book a free 30-min call",
+  detail: "For project scope and a plan",
+  meta: "cal.com/hasnaintaken",
+  href: "https://cal.com/hasnaintaken",
+};
 
 const channels = [
   {
-    icon: Calendar,
-    title: "Book a Free 30-Min Call",
-    subtitle: "Best for discussing your project scope",
-    cta: "Schedule Now →",
-    href: "https://cal.com/hasnaintaken",
-    primary: true,
-  },
-  {
-    icon: SiWhatsapp,
-    title: "WhatsApp Me",
-    subtitle: "Best for quick questions",
-    cta: "Open Chat →",
-    href: "https://wa.me/923132225220", // replace with real number
+    icon: MessageCircle,
+    title: "WhatsApp",
+    detail: "For quick questions",
+    meta: "Open chat",
+    href: "https://wa.me/923132225220",
   },
   {
     icon: Mail,
-    title: "Send an Email",
-    subtitle: "Best for formal project briefs",
-    cta: "hasnain.codes0@gmail.com",
+    title: "Email",
+    detail: "For formal project briefs",
+    meta: "hasnain.codes0@gmail.com",
     href: "mailto:hasnain.codes0@gmail.com",
   },
   {
     icon: Github,
-    title: "View GitHub",
-    subtitle: "Check my code quality",
-    cta: "github.com/hasnainxdev →",
+    title: "GitHub",
+    detail: "Code and open-source work",
+    meta: "github.com/hasnainxdev",
     href: "https://github.com/hasnainxdev",
   },
 ];
@@ -40,54 +40,52 @@ const Contact = () => {
   const ref = useFadeUp();
 
   return (
-    <section id="contact" className="py-24">
-      <div ref={ref} className="container mx-auto px-6 fade-up">
-        <div className="text-center mb-14">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-medium border border-primary/40 text-primary bg-primary/10 mb-4">
-            Get In Touch
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4">
-            Let's <span className="text-gradient">Work Together</span>
-          </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">
-            Pick the channel that works best for you. I respond within 24 hours.
+    <section id="contact" className="border-t border-border py-20 lg:py-24">
+      <div ref={ref} className="fade-up mx-auto max-w-[1440px] px-6 lg:px-8">
+        <header className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="font-mono text-xs text-muted-foreground">Contact</p>
+            <h2 className="mt-3 text-3xl font-medium tracking-[-0.02em] text-foreground lg:text-4xl">
+              Tell me about the product
+            </h2>
+          </div>
+          <p className="max-w-md text-sm leading-6 text-secondary-foreground">
+            Pick the channel that works best. I reply within 24 hours
           </p>
-        </div>
+        </header>
 
-        <div className="max-w-3xl mx-auto grid sm:grid-cols-2 gap-4">
-          {channels.map((c) => {
-            const Icon = c.icon;
-            return (
+        <div className="grid gap-4 lg:grid-cols-2">
+          <Link
+            href={primary.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-2xl bg-primary p-6 transition-colors duration-150 hover:bg-[#0b6b5b]"
+          >
+            <primary.icon size={18} strokeWidth={1.5} className="text-primary-foreground" />
+            <h3 className="mt-8 text-xl font-medium text-primary-foreground">{primary.title}</h3>
+            <p className="mt-2 text-sm text-primary-foreground">{primary.detail}</p>
+            <p className="mt-6 font-mono text-xs text-primary-foreground">{primary.meta}</p>
+          </Link>
+
+          <div className="divide-y divide-border rounded-2xl border border-border bg-card px-6">
+            {channels.map((channel) => (
               <Link
-                key={c.title}
-                href={c.href}
+                key={channel.title}
+                href={channel.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`rounded-xl border p-6 flex items-start gap-4 transition-all duration-300 group ${
-                  c.primary
-                    ? "bg-primary border-primary hover:bg-primary/90 col-span-full"
-                    : "bg-card border-border hover:border-primary/60 hover:shadow-[0_0_20px_-8px_rgba(127,119,221,0.4)]"
-                }`}
+                className="group flex items-center gap-4 py-4"
               >
-                <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${
-                  c.primary ? "bg-white/20" : "bg-primary/10"
-                }`}>
-                  <Icon size={20} className={c.primary ? "text-white" : "text-primary"} />
+                <channel.icon size={18} strokeWidth={1.5} className="shrink-0 text-muted-foreground" />
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-sm font-medium text-foreground">{channel.title}</h3>
+                  <p className="mt-1 truncate font-mono text-xs text-muted-foreground">{channel.meta}</p>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <p className={`font-semibold text-sm ${c.primary ? "text-white" : "text-foreground"}`}>
-                    {c.title}
-                  </p>
-                  <p className={`text-xs mt-0.5 ${c.primary ? "text-white/70" : "text-muted-foreground"}`}>
-                    {c.subtitle}
-                  </p>
-                  <p className={`text-xs mt-2 font-medium truncate ${c.primary ? "text-white" : "text-primary"}`}>
-                    {c.cta}
-                  </p>
-                </div>
+                <span className="hidden text-xs text-secondary-foreground sm:block">{channel.detail}</span>
+                <ArrowUpRight size={16} strokeWidth={1.5} className="shrink-0 text-muted-foreground" />
               </Link>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>

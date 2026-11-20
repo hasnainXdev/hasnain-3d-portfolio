@@ -1,23 +1,28 @@
 import type { Metadata } from "next";
-import { Caveat, Poppins } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-const poppins = Poppins({
+const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  variable: "--font-poppins",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-plex-sans",
+  weight: ["400", "500", "600"],
 });
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["700"], variable: "--font-handwriting" });
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-plex-mono",
+  weight: ["400", "500"],
+});
 
 export const metadata: Metadata = {
-  title: "Hasnain's Portfolio - Full Stack Developer",
-  description: "Explore Hasnain's portfolio showcasing expertise in full stack development, Agentic AI, and innovative web solutions. Discover projects, skills, and contact information.",
+  title: "Hasnain — Full-stack AI developer",
+  description:
+    "Production-grade AI systems built with FastAPI, RAG pipelines and Next.js. Full-stack work from first commit to a monitored deployment.",
 };
 
 export default function RootLayout({
@@ -27,16 +32,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${caveat.variable} antialiased`}>
+      <body className={`${plexSans.variable} ${plexMono.variable}`}>
         <Toaster />
         <Navbar />
-        <TooltipProvider>
-          {children}
-        </TooltipProvider>
+        <TooltipProvider>{children}</TooltipProvider>
         <Footer />
         <Analytics />
       </body>
     </html>
   );
 }
-

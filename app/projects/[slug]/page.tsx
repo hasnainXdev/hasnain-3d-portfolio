@@ -1,52 +1,25 @@
 "use client";
 
 import { projectsData } from "@/app/constants";
-import gsap from "gsap";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { useFadeUp } from "@/hooks/useFadeUp";
+import { ArrowLeft, ArrowUpRight, ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useRef } from "react";
 
 const ProjectDetails = () => {
   const params = useParams();
   const projectId = params.slug as string;
   const project = projectsData[projectId as keyof typeof projectsData];
-  const containerRef = useRef<HTMLDivElement>(null);
-  const heroImageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        heroImageRef.current,
-        { opacity: 0, scale: 0.95, y: 30 },
-        { opacity: 1, scale: 1, y: 0, duration: 1.2, ease: "power3.out" }
-      );
-
-      gsap.fromTo(
-        ".detail-section",
-        { opacity: 0, x: -30 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power2.out",
-          delay: 0.4,
-        }
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  const ref = useFadeUp();
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center px-6">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Project not found</h1>
-          <Link href="/" className="text-primary hover:underline">
-            Go back to projects
+          <h1 className="text-2xl font-medium text-foreground">Project not found</h1>
+          <Link href="/#projects" className="mt-4 inline-block text-sm text-secondary-foreground underline decoration-border underline-offset-4">
+            Back to projects
           </Link>
         </div>
       </div>
@@ -54,118 +27,91 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-background">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 py-16 max-w-7xl">
-        {/* Back Link */}
+    <div className="min-h-screen bg-background">
+      <div ref={ref} className="fade-up mx-auto max-w-[1440px] px-6 pb-24 pt-28 lg:px-8 lg:pt-40">
         <Link
           href="/#projects"
-          className="detail-section inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-12 group"
+          className="inline-flex items-center gap-2 text-xs text-secondary-foreground transition-colors duration-150 hover:text-foreground"
         >
-          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-          <span>Back to Projects</span>
+          <ArrowLeft size={16} strokeWidth={1.5} />
+          Back to projects
         </Link>
 
-        {/* Title & Meta */}
-        <div className="mb-12">
-          <h1 className="detail-section text-5xl md:text-7xl font-extrabold mb-4 text-gradient">
+        <header className="mt-10 border-b border-border pb-10">
+          <p className="font-mono text-xs text-muted-foreground">{project.tagline}</p>
+          <h1 className="mt-4 max-w-3xl text-4xl font-medium leading-[1.1] tracking-[-0.02em] text-foreground lg:text-[44px]">
             {project.title}
           </h1>
-          <p className="detail-section text-xl md:text-2xl text-foreground/80 mb-6">
-            {project.tagline}
-          </p>
-          <p className="detail-section text-base md:text-lg text-muted-foreground max-w-3xl leading-relaxed">
-            {project.fullDescription}
-          </p>
-        </div>
+          <p className="mt-6 max-w-3xl text-sm leading-6 text-secondary-foreground">{project.fullDescription}</p>
+        </header>
 
-        {/* Hero Image */}
-        <div
-          ref={heroImageRef}
-          className="mb-20 p-2 border-2 border-primary rounded-3xl shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 bg-gradient-to-br from-primary/5 to-transparent"
-        >
-          <div className="relative aspect-video rounded-2xl overflow-hidden bg-muted">
+        <div className="mt-10 rounded-2xl border border-border bg-card p-2">
+          <div className="relative aspect-video overflow-hidden rounded-lg bg-secondary">
             <Image
               src={project.image}
               alt={`${project.title} overview`}
               fill
-              className="object-cover"
+              className="object-cover object-top"
               priority
+              sizes="(max-width: 1024px) 100vw, 80vw"
             />
           </div>
         </div>
 
-        {/* Tech Stack */}
-        <div className="mb-20">
-          <h2 className="detail-section text-3xl md:text-4xl font-bold mb-6">
-            Tech Stack
-          </h2>
-          <div className="detail-section flex flex-wrap gap-3">
-            {project.tech.map((tech, i) => (
-              <span
-                key={i}
-                className="bg-gradient-to-r from-primary/30 to-transparent backdrop-blur-sm px-5 py-2.5 rounded-full border border-border text-base font-medium hover:border-primary/40 transition-colors"
-              >
+        <section className="mt-16">
+          <h2 className="font-mono text-xs text-muted-foreground">Tech stack</h2>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.tech.map((tech) => (
+              <span key={tech} className="rounded-md bg-secondary px-3 py-1.5 font-mono text-xs text-secondary-foreground">
                 {tech}
               </span>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Features */}
-        <div className="mb-20">
-          <h2 className="detail-section text-3xl md:text-4xl font-bold mb-8">
-            Key Features
-          </h2>
-          <div className="space-y-4">
-            {project.features.map((feature, index) => (
-              <div
-                key={index}
-                className="detail-section flex items-start gap-4 p-4 rounded-lg bg-gradient-to-r from-primary/10 to-transparent border border-border hover:border-primary/20 transition-all duration-300"
-              >
-                <div
-                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                  style={{ backgroundColor: project.color }}
-                />
-                <p className="text-base md:text-lg text-foreground/90">
-                  {feature}
-                </p>
-              </div>
+        <section className="mt-16">
+          <h2 className="font-mono text-xs text-muted-foreground">Key features</h2>
+          <ul className="mt-4 space-y-3">
+            {project.features.map((feature) => (
+              <li key={feature} className="flex items-start gap-3">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-muted" aria-hidden="true" />
+                <p className="text-sm leading-6 text-secondary-foreground">{feature}</p>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </section>
 
-        {/* CTA */}
-        <div className="detail-section pt-12 border-t border-border">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Interested in this project?
+        <section className="mt-16 border-t border-border pt-10">
+          <h2 className="text-2xl font-medium tracking-[-0.02em] text-foreground">
+            Interested in this project
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-2xl">
-            Explore the live application or dive into the source code to see how
-            it was built.
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-secondary-foreground">
+            Explore the live application or read the source code to see how it was built
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-primary/50 hover:scale-105"
+              className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors duration-150 hover:bg-[#0b6b5b]"
             >
-              <ExternalLink className="w-5 h-5" />
-              View Live Project
+              <ExternalLink size={16} strokeWidth={1.5} />
+              View live project
             </Link>
             {project.github && (
               <Link
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-secondary hover:bg-secondary/80 rounded-xl font-semibold text-lg transition-all duration-300 border border-border hover:border-primary/40"
+                className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card px-5 text-sm font-medium text-foreground transition-colors duration-150 hover:bg-secondary"
               >
-                <Github className="w-5 h-5" />
+                <Github size={16} strokeWidth={1.5} />
                 View on GitHub
+                <ArrowUpRight size={16} strokeWidth={1.5} className="text-muted-foreground" />
               </Link>
             )}
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

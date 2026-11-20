@@ -1,27 +1,29 @@
 "use client";
+
 import { useFadeUp } from "@/hooks/useFadeUp";
+import { BrainCircuit, CloudUpload, Layers3 } from "lucide-react";
 import Link from "next/link";
 
 const services = [
   {
-    icon: "🤖",
-    title: "AI / RAG Backends",
-    description: "Custom AI pipelines, vector search, and LLM integrations built with FastAPI. Production-ready and scalable.",
-    price: "From $3K",
+    icon: BrainCircuit,
+    title: "AI and RAG backends",
+    description: "Custom AI pipelines, vector search and LLM integrations built with FastAPI. Production-ready and scalable.",
+    price: "$3,000",
     timeline: "1–2 weeks",
   },
   {
-    icon: "⚡",
+    icon: Layers3,
     title: "Micro SaaS",
-    description: "End-to-end Micro SaaS with auth, billing, dashboard, and DB - everything you need to launch and charge customers.",
-    price: "From $4.5K",
+    description: "End-to-end Micro SaaS with auth, billing, dashboard and a database, ready to launch and charge customers.",
+    price: "$4,500",
     timeline: "2–4 weeks",
   },
   {
-    icon: "🚀",
-    title: "Production Deployment",
-    description: "CI/CD pipelines, Docker, Vercel/Railway/Render/Netlify/Koyeb/VPS or AWS - your app live, monitored, and ready to scale.",
-    price: "From $1.5K",
+    icon: CloudUpload,
+    title: "Production deployment",
+    description: "CI/CD, Docker and deployment to Vercel, Railway, Render, Netlify, Koyeb, VPS or AWS, with monitoring in place.",
+    price: "$1,500",
     timeline: "3–5 days",
   },
 ];
@@ -30,47 +32,42 @@ const ServicesSection = () => {
   const ref = useFadeUp();
 
   return (
-    <section id="services" className="py-24">
-      <div ref={ref} className="container mx-auto px-6 fade-up">
-        <div className="text-center mb-4">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-medium border border-primary/40 text-primary bg-primary/10 mb-4">
-            What I Offer
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4">
-            Services & <span className="text-gradient">Pricing</span>
-          </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">
-            Three focused services for early-stage startups. Fixed scope, fixed price, fast delivery.
+    <section id="services" className="border-t border-border py-20 lg:py-24">
+      <div ref={ref} className="fade-up mx-auto max-w-[1440px] px-6 lg:px-8">
+        <header className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="font-mono text-xs text-muted-foreground">Services</p>
+            <h2 className="mt-3 text-3xl font-medium tracking-[-0.02em] text-foreground lg:text-4xl">
+              Fixed scope, fixed price
+            </h2>
+          </div>
+          <p className="max-w-md text-sm leading-6 text-secondary-foreground">
+            Three focused services for early-stage startups, priced before the work starts
           </p>
-        </div>
+        </header>
 
-        <div className="grid md:grid-cols-3 gap-6 mt-14">
-          {services.map((s, i) => (
-            <div
-              key={s.title}
-              className="relative rounded-xl border border-border bg-card p-6 hover:border-primary/60 hover:shadow-[0_0_30px_-8px_rgba(127,119,221,0.4)] transition-all duration-300 flex flex-col gap-4"
-            >
-              <div className="text-3xl">{s.icon}</div>
-              <div>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-2">
-                  {s.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {s.description}
+        <div className="grid gap-4 md:grid-cols-3">
+          {services.map((service) => (
+            <article key={service.title} className="flex flex-col rounded-2xl border border-border bg-card p-6">
+              <service.icon size={18} strokeWidth={1.5} className="text-muted-foreground" />
+              <h3 className="mt-6 text-base font-medium text-foreground">{service.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-secondary-foreground">{service.description}</p>
+              <div className="mt-auto flex items-baseline justify-between gap-4 border-t border-border pt-4">
+                <p className="font-mono text-sm tabular-nums text-foreground">
+                  <span className="text-muted-foreground">from </span>
+                  {service.price}
                 </p>
+                <p className="font-mono text-xs tabular-nums text-muted-foreground">{service.timeline}</p>
               </div>
-              <div className="mt-auto pt-4 border-t border-border flex items-center justify-between">
-                <span className="text-primary font-bold text-sm">{s.price}</span>
-                <span className="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded-md">
-                  ⏱ {s.timeline}
-                </span>
-              </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        <p className="text-center text-xs text-muted-foreground mt-8">
-          Not sure which fits? <Link href="#contact" className="text-primary hover:underline">Book a free 30-min call</Link> and we'll figure it out together.
+        <p className="mt-8 text-sm text-secondary-foreground">
+          Not sure which fits?{" "}
+          <Link href="#contact" className="text-foreground underline decoration-border underline-offset-4 transition-colors duration-150 hover:decoration-primary">
+            Book a free 30-min call
+          </Link>
         </p>
       </div>
     </section>
