@@ -37,13 +37,21 @@ const ProjectSection = () => {
                   index === 0 ? "aspect-[16/9] lg:aspect-[2.4/1]" : "aspect-video"
                 }`}
               >
-                <Image
-                  src={project.image}
-                  alt={`${project.title} interface`}
-                  fill
-                  className="object-cover object-top"
-                  sizes={index === 0 ? "(max-width: 1024px) 100vw, 80vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
-                />
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} interface`}
+                    fill
+                    className="object-cover object-top"
+                    sizes={index === 0 ? "(max-width: 1024px) 100vw, 80vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
+                  />
+                ) : (
+                  <div className="flex h-full flex-col justify-between p-5">
+                    <p className="font-mono text-xs text-muted-foreground">repository</p>
+                    <p className="font-mono text-sm text-foreground">{project.slug}</p>
+                    <p className="font-mono text-xs text-secondary-foreground">{project.tech.slice(0, 3).join(" · ")}</p>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-1 flex-col gap-2 p-5">

@@ -1,125 +1,93 @@
 export const projectsData = {
-    // 'pinggenius-backend': {
-    //     id: 'pinggenius-backend',
-    //     title: "PingGenius Backend",
-    //     tagline: "AI-Assisted LinkedIn Outreach Engine",
-    //     description: "Production-ready FastAPI backend for hyper-personalized, guarded LinkedIn DMs.",
-    //     fullDescription: "PingGenius is a robust, production-ready FastAPI backend tailored for automated yet carefully guarded LinkedIn outreach. It transforms raw profile data into context-aware connection notes, direct messages, and custom follow-up sequences. The system enforces strict deterministic output controls, rate-limiting, idempotency keys, and GDPR-compliant data processing, all governed by a mandatory human-in-the-loop flow to guarantee no message is dispatched without manual review.",
-    //     tech: ["FastAPI", "Python", "Pydantic", "OpenAI API", "Redis", "PostgreSQL"],
-    //     image: "/pinggenius-backend.png",
-    //     mockups: ["/pinggenius-backend.png", "/pinggenius-backend.png", "/pinggenius-backend.png"],
-    //     link: "https://github.com/hasnainxdev/pinggenius_backend",
-    //     github: "https://github.com/hasnainxdev/pinggenius_backend",
-    //     features: [
-    //         "AI-powered generation of connection notes, DMs, and follow-ups",
-    //         "Strict hallucination guards with deterministic output handling",
-    //         "Idempotency keys, API timeouts, and robust rate limiting",
-    //         "GDPR-minded processing of sensitive profile details",
-    //         "Human-in-the-loop approval workflow to prevent accidental auto-sending"
-    //     ],
-    //     color: "#2563EB"
-    // },
-    'saasjet': {
-        id: 'saasjet',
-        title: "SaaSJet Boilerplate",
-        tagline: "Lean SaaS Starter Kit for Solo Founders",
-        description: "An unopinionated open-source boilerplate to launch fast without enterprise bloat.",
-        fullDescription: "SaaSJet is a minimalist, open-source SaaS starter kit designed specifically for solo developers and indie hackers. It provides a complete, modern baseline for web applications without forcing unnecessary abstractions. Features include standard authentication, Prisma ORM with PostgreSQL, a sleek user dashboard, built-in Stripe subscriptions/billing workflows, and a streamlined API structure.",
-        tech: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS", "NextAuth"],
-        image: "/saasjet.png",
-        mockups: ["/saasjet.png", "/saasjet.png", "/saasjet.png"],
-        link: "https://github.com/hasnainxdev/saasjet",
-        github: "https://github.com/hasnainxdev/saasjet",
-        features: [
-            "Lightweight foundation with minimal enterprise complexity",
-            "Ready-to-use authentication and secure user routing",
-            "Pre-configured Prisma ORM mapped to PostgreSQL schemas",
-            "Seamless Stripe subscription plans and customer portal billing",
-            "Clean dashboard UI without upsells or paywalled features"
-        ],
-        color: "#EC4899"
-    },
-    'todo-spec-driven': {
-        id: 'todo-spec-driven',
-        title: "Spec-Driven Todo Evolution",
-        tagline: "Multi-Phase Cloud-Native Roadmap",
-        description: "A progressive todo application evolving across five architectural phases.",
-        fullDescription: "This project serves as an evolutionary architectural blueprint, demonstrating a todo application growing across five distinct development phases: an in-memory Python console app, a modern full-stack web application with Next.js/FastAPI/SQLModel/Neon, an AI-powered todo chatbot leveraging OpenAI agents, a local Kubernetes container deployment, and a cloud-native event-driven system leveraging Kafka, Dapr, and DigitalOcean Kubernetes.",
-        tech: ["Next.js", "FastAPI", "SQLModel", "OpenAI SDK", "Kafka", "Dapr", "Kubernetes", "Neon"],
-        image: "/todo-spec-driven.png",
-        mockups: ["/todo-spec-driven.png", "/todo-spec-driven.png", "/todo-spec-driven.png"],
-        link: "https://github.com/hasnainxdev/Hackathon-II-Todo-Spec-Driven",
-        github: "https://github.com/hasnainxdev/Hackathon-II-Todo-Spec-Driven",
-        features: [
-            "Phase-based evolution from a simple CLI app to a microservices architecture",
-            "Full-stack implementation using Next.js, FastAPI, SQLModel, and Neon Serverless Postgres",
-            "Intelligent Todo AI Agent integrating advanced OpenAI tool-calling capabilities",
-            "Local containerization and deployment orchestration with Kubernetes",
-            "Advanced event-driven orchestration layer utilizing Kafka and Dapr"
-        ],
-        color: "#F59E0B"
-    },
-    'comforty': {
-        id: 'comforty',
-        title: "Comforty - Furniture Marketplace",
-        tagline: "Elegant E-Commerce & CMS Platform",
-        description: "A specialized furniture e-commerce platform and schema-driven CMS implementation.",
-        fullDescription: "Comforty is a furniture-focused e-commerce marketplace highlighting custom-architected database schemas and Sanity CMS integration. The project showcases robust schema modeling for users, shipping zones, categories, discount coupons, and item catalogs, supported by backend endpoints for product details, authentication, and order handling.",
-        tech: ["Next.js", "Tailwind CSS", "Sanity.io", "Stripe", "NextAuth", "TypeScript"],
-        image: "/furniture-store.png",
-        mockups: ["/furniture-store.png", "/furniture-store.png", "/furniture-store.png"],
-        link: "https://uiux-hackathon-2024.vercel.app",
-        github: "https://github.com/hasnainxdev/Comforty",
-        features: [
-            "Custom database schemas designed for products, categories, coupons, and orders",
-            "Seamless headless content management using Sanity CMS",
-            "Structured API routes for fast product catalog delivery and checkout processing",
-            "Fully functional dynamic shopping cart with modern UI elements",
-            "Extensible scaffolding for payment gateway and shipping integrations"
-        ],
-        color: "#7738E0"
-    },
-    'shoprr': {
-        id: 'shoprr',
-        title: "Shoprr Storefront",
-        tagline: "Modern High-Performance Shopping Experience",
-        description: "A sleek, consumer-oriented storefront powered by Clerk, Stripe, and Sanity.",
-        fullDescription: "Shoprr is a modern e-commerce storefront designed for fast page loads and high conversions. Built with a modern tech stack containing Next.js, React, and Tailwind CSS, it integrates Clerk for user authentication, Stripe for payment processing, Sanity for inventory content management, and MongoDB with Redux Toolkit for clean client state management.",
-        tech: ["Next.js", "React", "Clerk", "Stripe", "Sanity.io", "MongoDB", "Redux Toolkit", "Zod"],
-        image: "/shoprr.png",
-        mockups: ["/shoprr.png", "/shoprr.png", "/shoprr.png"],
-        link: "https://github.com/hasnainxdev/ecommerce-shop-build",
-        github: "https://github.com/hasnainxdev/ecommerce-shop-build",
-        features: [
-            "Highly interactive UI built with React, Tailwind CSS, and shadcn/ui",
-            "Seamless third-party identity management and social logins with Clerk",
-            "Secure payment routing and checkout handling via Stripe",
-            "Global client-side state management using Redux Toolkit",
-            "Robust runtime API data validation using Zod schemas"
-        ],
-        color: "#10B981"
-    }
+  saasjet: {
+    id: "saasjet",
+    title: "SaaSJet",
+    tagline: "A lean SaaS starter kit",
+    description: "An open-source boilerplate for launching a paid product without enterprise bloat.",
+    fullDescription:
+      "SaaSJet is a lean, production-ready open-source SaaS boilerplate built to get an idea from zero to paying customers in days. It keeps the stack modern and the overhead small, with authentication, a dashboard, billing and a clean API structure already in place.",
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS"],
+    image: "/saasjet-home.png",
+    link: "https://github.com/hasnainXdev/saasjet",
+    github: "https://github.com/hasnainXdev/saasjet",
+    live: "https://saasjet.vercel.app",
+    features: [
+      "Authentication and protected routes ready on day one",
+      "Prisma with PostgreSQL and a clean data layer",
+      "Stripe subscription and customer portal flows",
+      "Dashboard UI without paywalls or upsell clutter",
+      "Open source and easy to extend",
+    ],
+    color: "#0e7c6a",
+  },
+  llm_usage_billing_service: {
+    id: "llm_usage_billing_service",
+    title: "LLM Usage & Billing Service",
+    tagline: "Metering and quotas for LLM products",
+    description: "A standalone FastAPI service that meters token usage, enforces quotas and bills through Stripe.",
+    fullDescription:
+      "A multi-tenant usage-metering and billing service built with FastAPI and Postgres. It records idempotent usage events, enforces monthly plan quotas with clear 429 and 402 responses, converts usage into integer micro-unit costs, and upgrades plans through signed, replay-safe Stripe Checkout webhooks. Test mode only, forever.",
+    tech: ["Python", "FastAPI", "PostgreSQL", "Stripe", "Docker", "Pytest"],
+    image: null,
+    link: "https://github.com/hasnainXdev/llm_usage_billing_service",
+    github: "https://github.com/hasnainXdev/llm_usage_billing_service",
+    live: "",
+    features: [
+      "Idempotent usage events per tenant",
+      "Monthly plan quotas with 429 and 402 handling",
+      "Integer micro-unit costing to avoid float drift",
+      "Stripe Checkout with signed, replay-safe webhooks",
+      "Containerized and covered by tests",
+    ],
+    color: "#12a88e",
+  },
+  token_optimization_benchmark: {
+    id: "token_optimization_benchmark",
+    title: "Token Optimization Benchmark",
+    tagline: "Cheaper coding-agent context",
+    description: "A zero-cost benchmark for measuring how much context cost a coding agent can shed.",
+    fullDescription:
+      "A small, self-contained benchmark that measures how much you can cut a coding agent's context cost by changing what you send. It runs the same six-step task across a tiny fake repository twice, then reports the token and cost difference between the wasteful and optimized strategies.",
+    tech: ["Python", "LLM agents", "Context engineering", "Prompt design"],
+    image: null,
+    link: "https://github.com/hasnainXdev/token_optimization_benchmark",
+    github: "https://github.com/hasnainXdev/token_optimization_benchmark",
+    live: "",
+    features: [
+      "Same task run twice for a clean comparison",
+      "Measures tokens and cost, not vibes",
+      "Zero external services or paid APIs required",
+      "Tiny fake repository keeps runs fast and repeatable",
+      "Clear report on where context was wasted",
+    ],
+    color: "#5e554a",
+  },
+  pinggenius_backend: {
+    id: "pinggenius_backend",
+    title: "PingGenius Backend",
+    tagline: "Human-safe LinkedIn outreach",
+    description: "A FastAPI backend that turns a profile into personalized, reviewed outreach sequences.",
+    fullDescription:
+      "PingGenius is a production-ready FastAPI and Agents SDK backend that turns a LinkedIn profile into personalized connection notes, direct messages and follow-ups. Hard hallucination guards, timeouts, idempotency and tone control keep the output useful and safe, with a human review step before anything is sent.",
+    tech: ["Python", "FastAPI", "Agents SDK", "PostgreSQL", "Redis", "Docker"],
+    image: "/pinggenius-og.png",
+    link: "https://github.com/hasnainXdev/pinggenius_backend",
+    github: "https://github.com/hasnainXdev/pinggenius_backend",
+    live: "",
+    features: [
+      "Profile to connection note, DM and follow-up sequence",
+      "Deterministic guards against invented details",
+      "Timeouts, idempotency keys and rate limiting",
+      "Tone control with human-in-the-loop review",
+      "Measured improvement in writing time and failure rate",
+    ],
+    color: "#1f1b16",
+  },
 };
 
 export const projects = [
-//   {
-//     ...projectsData['pinggenius-backend'],
-//     slug: 'pinggenius-backend'
-//   },
-  {
-    ...projectsData['saasjet'],
-    slug: 'saasjet'
-  },
-  {
-    ...projectsData['todo-spec-driven'],
-    slug: 'todo-spec-driven'
-  },
-  {
-    ...projectsData['comforty'],
-    slug: 'comforty'
-  },
-  {
-    ...projectsData['shoprr'],
-    slug: 'shoprr'
-  }
+  { ...projectsData.saasjet, slug: "saasjet" },
+  { ...projectsData.llm_usage_billing_service, slug: "llm_usage_billing_service" },
+  { ...projectsData.token_optimization_benchmark, slug: "token_optimization_benchmark" },
+  { ...projectsData.pinggenius_backend, slug: "pinggenius_backend" },
 ];

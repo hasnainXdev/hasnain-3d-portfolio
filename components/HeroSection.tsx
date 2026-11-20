@@ -11,9 +11,6 @@ const stages = [
 ];
 
 const Hero = () => {
-  const scrollTo = (id: string) =>
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-
   return (
     <section className="min-h-screen">
       <div className="mx-auto grid min-h-screen max-w-[1440px] items-center gap-12 px-6 pb-16 pt-28 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16 lg:px-8 lg:pb-24 lg:pt-40">
@@ -47,14 +44,13 @@ const Hero = () => {
               <Calendar size={16} strokeWidth={1.5} />
               Book a free 30-min call
             </Link>
-            <button
-              type="button"
-              onClick={() => scrollTo("#projects")}
+            <Link
+              href="#projects"
               className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card px-5 text-sm font-medium text-foreground transition-colors duration-150 hover:bg-secondary"
             >
               See projects
               <ArrowRight size={16} strokeWidth={1.5} />
-            </button>
+            </Link>
           </div>
         </div>
 

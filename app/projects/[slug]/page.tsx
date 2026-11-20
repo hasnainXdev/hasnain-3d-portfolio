@@ -47,14 +47,22 @@ const ProjectDetails = () => {
 
         <div className="mt-10 rounded-2xl border border-border bg-card p-2">
           <div className="relative aspect-video overflow-hidden rounded-lg bg-secondary">
-            <Image
-              src={project.image}
-              alt={`${project.title} overview`}
-              fill
-              className="object-cover object-top"
-              priority
-              sizes="(max-width: 1024px) 100vw, 80vw"
-            />
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={`${project.title} overview`}
+                fill
+                className="object-cover object-top"
+                priority
+                sizes="(max-width: 1024px) 100vw, 80vw"
+              />
+            ) : (
+              <div className="flex h-full flex-col justify-between p-6">
+                <p className="font-mono text-xs text-muted-foreground">repository</p>
+                <p className="font-mono text-base text-foreground">{project.id}</p>
+                <p className="font-mono text-xs text-secondary-foreground">{project.tech.join(" · ")}</p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -90,15 +98,15 @@ const ProjectDetails = () => {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
-              href={project.link}
+              href={project.live || project.github}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors duration-150 hover:bg-[#0b6b5b]"
             >
-              <ExternalLink size={16} strokeWidth={1.5} />
-              View live project
+              {project.live ? <ExternalLink size={16} strokeWidth={1.5} /> : <Github size={16} strokeWidth={1.5} />}
+              {project.live ? "View live project" : "View source"}
             </Link>
-            {project.github && (
+            {project.live && (
               <Link
                 href={project.github}
                 target="_blank"

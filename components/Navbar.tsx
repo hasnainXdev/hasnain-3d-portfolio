@@ -20,11 +20,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleClick = (href: string) => {
-    setMobileOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <nav
       className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-150 ${
@@ -38,20 +33,20 @@ const Navbar = () => {
 
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <button
+            <a
               key={link.href}
-              onClick={() => handleClick(link.href)}
+              href={link.href}
               className="text-sm text-secondary-foreground transition-colors duration-150 hover:text-foreground"
             >
               {link.label}
-            </button>
+            </a>
           ))}
-          <button
-            onClick={() => handleClick("#contact")}
+          <a
+            href="#contact"
             className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors duration-150 hover:bg-[#0b6b5b]"
           >
             Hire me
-          </button>
+          </a>
         </div>
 
         <button
@@ -68,13 +63,14 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="menu-in border-t border-border bg-background px-6 py-4 md:hidden">
           {navLinks.map((link) => (
-            <button
+            <a
               key={link.href}
-              onClick={() => handleClick(link.href)}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
               className="block w-full py-2 text-start text-sm text-secondary-foreground transition-colors duration-150 hover:text-foreground"
             >
               {link.label}
-            </button>
+            </a>
           ))}
         </div>
       )}
