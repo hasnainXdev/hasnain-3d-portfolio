@@ -161,3 +161,77 @@
     animation: none;
   }
 }
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+html.existence-boot,
+html:has(body.existence-mode) {
+  background: #050506;
+}
+
+html.existence-boot body,
+body.existence-mode {
+  background: #050506;
+  color: #e8e8ec;
+}
+
+html.existence-boot nav,
+html.existence-boot footer,
+body.existence-mode nav,
+body.existence-mode footer {
+  display: none;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #6b6b72 #cbc7c0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #cbc7c0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #6b6b72;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4e4e55;
+}
+
+html.existence-boot,
+html:has(body.existence-mode) {
+  scrollbar-color: #55555c #050506;
+}
+
+html.existence-boot ::-webkit-scrollbar-track,
+html:has(body.existence-mode) ::-webkit-scrollbar-track {
+  background: #050506;
+}
+
+html.existence-boot ::-webkit-scrollbar-thumb,
+html:has(body.existence-mode) ::-webkit-scrollbar-thumb {
+  background: #55555c;
+}
+
+html.existence-boot ::-webkit-scrollbar-thumb:hover,
+html:has(body.existence-mode) ::-webkit-scrollbar-thumb:hover {
+  background: #6f6f78;
+}

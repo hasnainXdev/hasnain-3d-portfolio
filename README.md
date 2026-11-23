@@ -1,5 +1,3 @@
----
-
 ## 🎯 Plan: Make This Portfolio 3-5x More Powerful (Simple Version)
 
 ### The Problem
@@ -68,5 +66,3 @@ Add 1-2 posts like:
 ✅ **Higher-quality leads** (they know what you do)  
 ✅ **Shorter sales cycle** (they trust you faster)  
 ✅ **Better project fit** (wrong clients self-filter out)
-
----

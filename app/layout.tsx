@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Anton, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
@@ -19,10 +19,15 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const display = Anton({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: "400",
+});
+
 export const metadata: Metadata = {
-  title: "Hasnain — Full-stack AI developer",
-  description:
-    "Production-grade AI systems built with FastAPI, RAG pipelines and Next.js. Full-stack work from first commit to a monitored deployment.",
+  title: "Hasnain the Engineer - EXISTENCE.EXE",
+  description: "A consciousness, reconstructed. An experimental particle portfolio.",
 };
 
 export default function RootLayout({
@@ -31,8 +36,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${plexSans.variable} ${plexMono.variable}`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${plexSans.variable} ${plexMono.variable} ${display.variable}`}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: 'if(location.pathname==="/")document.documentElement.classList.add("existence-boot");',
+          }}
+        />
         <Toaster />
         <Navbar />
         <TooltipProvider>{children}</TooltipProvider>
