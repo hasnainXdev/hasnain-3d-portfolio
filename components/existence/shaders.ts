@@ -11,6 +11,9 @@ export const vertexShader = /* glsl */ `
   uniform float uHighlight;
   uniform float uExit;
   uniform float uBreath;
+  uniform float uColorRestore;
+  uniform float uFocus;
+  uniform vec3 uSelectedNode;
   uniform vec3 uProjectNodes[${PROJECT_INDICES.length}];
   uniform float uMouseStrength;
   uniform float uAttract;
@@ -92,6 +95,10 @@ export const vertexShader = /* glsl */ `
         nearest = min(nearest, distance(p, uProjectNodes[i]));
       }
       vHighlight = (1.0 - smoothstep(0.0, 0.32, nearest)) * uHighlight;
+      if (uFocus > 0.001) {
+        float selected = 1.0 - smoothstep(0.0, 0.46, distance(p, uSelectedNode));
+        vHighlight = max(vHighlight, selected * uFocus * uHighlight);
+      }
     }
 
     float arc = sin(t * PI);
@@ -130,7 +137,7 @@ export const vertexShader = /* glsl */ `
     vLum = aLum;
     vColor = aColor;
     vFeature = portraitFeature;
-    vAlpha = uReveal * (0.24 + 0.76 * t) * (0.32 + 0.68 * aLum)
+    vAlpha = uReveal * (0.34 + 0.66 * t) * (0.46 + 0.54 * aLum)
       * (1.0 - uDisruption * 0.1 * clamp(abs(burst.z) * 0.4, 0.0, 1.0))
       * (1.0 - uExit * 0.55)
       * (1.0 + portraitFeature * 0.28);
@@ -138,9 +145,11 @@ export const vertexShader = /* glsl */ `
     vec4 mvPosition = modelViewMatrix * vec4(p, 1.0);
     gl_Position = projectionMatrix * mvPosition;
 
+    float darkDetail = uColorRestore * (1.0 - aLum);
     float size = uSize * (0.5 + 0.8 * aLum)
       * (1.0 + force * 0.85 + uDisruption * 0.25 + vHighlight * 0.9)
-      * (1.0 + portraitFeature * 0.18);
+      * (1.0 + portraitFeature * 0.18)
+      * (1.0 + darkDetail * 0.28);
     gl_PointSize = clamp(
       size * uPixelRatio / max(0.35, -mvPosition.z),
       0.6,
@@ -153,6 +162,7 @@ export const fragmentShader = /* glsl */ `
   uniform float uProgress;
   uniform float uColorRestore;
   uniform float uNetwork;
+  uniform float uFocus;
 
   varying float vAlpha;
   varying float vLum;
@@ -180,12 +190,20 @@ export const fragmentShader = /* glsl */ `
     float sourceLuma = dot(sourceColor, vec3(0.2126, 0.7152, 0.0722));
     vec3 grayscale = mix(monochrome, vec3(sourceLuma), uColorRestore);
     vec3 color = mix(grayscale, sourceColor, uColorRestore);
-    float focusDim = uNetwork * (1.0 - vHighlight * 0.85);
-    color *= mix(1.0, 0.58, focusDim);
-    color *= mix(1.0, 1.1, featureGlow);
-    alpha *= mix(1.0, 0.7, focusDim);
-    alpha *= mix(1.0, 0.82, uColorRestore);
-    alpha *= mix(1.0, 1.14, featureGlow);
+    color *= mix(1.0, 1.06, uColorRestore);
+    float focusDim = uNetwork * (1.0 - vHighlight * 0.9);
+    float selectedLift = uFocus * vHighlight * 0.3;
+    color *= mix(1.0, 0.42, focusDim);
+    color *= 1.0 + selectedLift;
+    color *= mix(1.0, 1.16, featureGlow);
+    alpha *= mix(1.0, 0.5, focusDim);
+    alpha *= mix(1.0, 1.1, uColorRestore);
+    alpha *= 1.0 + selectedLift;
+    alpha *= mix(1.0, 1.18, featureGlow);
+
+    float shadowGain = (1.0 - sourceLuma) * uColorRestore;
+    color *= 1.0 + shadowGain * 0.5;
+    alpha *= 1.0 + shadowGain * 0.3;
 
     gl_FragColor = vec4(color, alpha);
   }

@@ -43,14 +43,23 @@ function enhanceColor(r: number, g: number, b: number): [number, number, number]
   const linearG = srgbToLinear(g / 255);
   const linearB = srgbToLinear(b / 255);
   const luma = 0.2126 * linearR + 0.7152 * linearG + 0.0722 * linearB;
-  const mapped = Math.min(1, toneMap(luma * 4.2 + 0.008));
-  const scale = luma > 0.0001 ? mapped / luma : 0;
-  const shadowLift = 0.004;
+  const mapped = Math.min(0.97, toneMap(luma * 3.6 + 0.012));
+  const scale = luma > 0.00001 ? mapped / luma : 0;
+  const shadowLift = 0.04;
+
+  let red = Math.min(1, linearR * scale + shadowLift);
+  let green = Math.min(1, linearG * scale + shadowLift);
+  let blue = Math.min(1, linearB * scale + shadowLift);
+
+  const warmth = Math.max(0, red - blue) * 0.28;
+  red -= warmth;
+  green += warmth * 0.3;
+  blue += warmth * 0.55;
 
   return [
-    linearToSrgb(Math.min(1, linearR * scale + shadowLift)),
-    linearToSrgb(Math.min(1, linearG * scale + shadowLift)),
-    linearToSrgb(Math.min(1, linearB * scale + shadowLift)),
+    linearToSrgb(Math.max(0, Math.min(1, red))),
+    linearToSrgb(Math.max(0, Math.min(1, green))),
+    linearToSrgb(Math.max(0, Math.min(1, blue))),
   ];
 }
 
@@ -68,7 +77,12 @@ function facialFeatureWeight(x: number, y: number) {
   const nose = bell(x, y, 0.02, 0.2, 0.1, 0.14);
   const mouth = bell(x, y, 0.02, 0.02, 0.15, 0.075);
   const jaw = bell(x, y, 0.03, -0.16, 0.26, 0.09);
-  return Math.max(eyes, nose, mouth, jaw);
+  const forehead = bell(x, y, 0, 0.28, 0.4, 0.18);
+  const ears = Math.max(
+    bell(x, y, -0.44, 0.04, 0.13, 0.2),
+    bell(x, y, 0.44, 0.04, 0.13, 0.2)
+  );
+  return Math.max(eyes, nose, mouth, jaw, forehead * 0.8, ears * 0.72);
 }
 
 function loadImage(src: string) {
@@ -152,7 +166,7 @@ export async function samplePortrait(src: string, count: number): Promise<Partic
     return fallback(count);
   }
 
-  const size = 280;
+  const size = 320;
   const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
@@ -212,7 +226,7 @@ export async function samplePortrait(src: string, count: number): Promise<Partic
       const feature = facialFeatureWeight(nx, ny);
       const detail = Math.min(0.5, contrast * 2.6 + silhouette * 0.35);
 
-      if (selector() > 0.42 + detail + feature * 0.5) continue;
+      if (selector() > 0.42 + detail + feature * 0.65) continue;
 
       const alphaScale = alpha / 255;
       const enhanced = enhanceColor(pixels[offset], pixels[offset + 1], pixels[offset + 2]);
@@ -223,10 +237,10 @@ export async function samplePortrait(src: string, count: number): Promise<Partic
         y: ny,
         lum: Math.min(
           1,
-          0.12 +
-            enhancedLuma * 0.7 +
+          0.26 +
+            enhancedLuma * 0.56 +
             Math.min(0.22, contrast * 1.3 + silhouette * 0.18) +
-            feature * 0.08
+            feature * 0.12
         ),
         feature,
         color: [

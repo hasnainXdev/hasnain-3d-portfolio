@@ -61,12 +61,14 @@ export default function ParticleField({
       uHighlight: { value: 0 },
       uExit: { value: 0 },
       uBreath: { value: 0 },
+      uFocus: { value: 0 },
+      uSelectedNode: { value: new THREE.Vector3(20, 20, 0) },
       uColorRestore: { value: 0 },
       uProjectNodes: { value: PROJECT_INDICES.map(() => new THREE.Vector3(20, 20, 0)) },
       uMouseStrength: { value: 0.25 },
       uAttract: { value: 0 },
       uPixelRatio: { value: 1 },
-      uSize: { value: 22 },
+      uSize: { value: 24 },
       uMouse: { value: new THREE.Vector3(20, 20, 0) },
     }),
     []
@@ -97,6 +99,7 @@ export default function ParticleField({
     uniforms.uHighlight.value += (current.highlight - uniforms.uHighlight.value) * step;
     uniforms.uExit.value += (current.exit - uniforms.uExit.value) * step;
     uniforms.uBreath.value += (current.breath - uniforms.uBreath.value) * step;
+    uniforms.uFocus.value += ((current.projectFocus === null ? 0 : 1) - uniforms.uFocus.value) * step;
     uniforms.uColorRestore.value += (current.colorRestore - uniforms.uColorRestore.value) * step;
     uniforms.uReveal.value = Math.min(1, uniforms.uReveal.value + delta * 0.55);
     uniforms.uMouseStrength.value +=
@@ -149,8 +152,8 @@ export default function ParticleField({
     if (lineMaterialRef.current) {
       lineMaterialRef.current.opacity =
         uniforms.uNetwork.value *
-        (0.1 + uniforms.uEnergy.value * 0.06) *
-        (1 - uniforms.uHighlight.value * 0.35) *
+        (0.055 + uniforms.uEnergy.value * 0.035) *
+        (1 - uniforms.uHighlight.value * 0.55) *
         (1 - uniforms.uExit.value * 0.6) *
         current.link;
     }
@@ -173,14 +176,20 @@ export default function ParticleField({
           uniforms.uProjectNodes.value[i].set(local[0], local[1], local[2]);
           projected.set(local[0] * scale, local[1] * scale + offsetY, local[2] * scale);
           projected.project(state.camera);
-          const normalizedX = projected.x * 0.5 + 0.5;
+          const x = (projected.x * 0.5 + 0.5) * width;
           return {
-            x: normalizedX * width,
+            x,
             y: (-projected.y * 0.5 + 0.5) * height,
-            side: normalizedX > 0.56 ? "left" : "right",
-          } as const;
+            side: x > width * 0.58 ? ("left" as const) : ("right" as const),
+            local,
+          };
         })
       : [];
+
+    if (current.projectFocus !== null && nodePositions[current.projectFocus]) {
+      const local = nodePositions[current.projectFocus].local;
+      uniforms.uSelectedNode.value.set(local[0], local[1], local[2]);
+    }
 
     for (let i = 0; i < PROJECT_INDICES.length; i++) {
       const button = projectNodeRefs.current[i];
@@ -206,7 +215,11 @@ export default function ParticleField({
       const above = nodePositions.filter(
         (other, j) => j !== i && other.side === position.side && other.y < position.y
       ).length;
-      const shift = nearby ? (above % 2 === 0 ? -14 : 14) : 0;
+      let shift = nearby ? (above % 2 === 0 ? -14 : 14) : 0;
+      const labelY = position.y + shift;
+      const minY = 88;
+      const maxY = height - 88;
+      shift += Math.max(0, minY - labelY) - Math.max(0, labelY - maxY);
 
       button.dataset.side = position.side;
       button.style.setProperty("--label-shift", `${shift}px`);

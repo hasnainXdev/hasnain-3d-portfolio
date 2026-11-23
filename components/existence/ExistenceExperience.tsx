@@ -45,6 +45,9 @@ export default function ExistenceExperience() {
     () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
   const [focusedProject, setFocusedProject] = useState<number | null>(null);
+  const [isTouch] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches
+  );
 
   useLayoutEffect(() => {
     document.documentElement.classList.add("existence-boot");
@@ -114,6 +117,12 @@ export default function ExistenceExperience() {
       stateRef.current.projectFocus = null;
       setFocusedProject(null);
     }, 140);
+  };
+
+  const clearProjectFocus = () => {
+    cancelProjectBlur();
+    stateRef.current.projectFocus = null;
+    setFocusedProject(null);
   };
 
   useEffect(
@@ -319,8 +328,8 @@ export default function ExistenceExperience() {
         5
       );
 
-      timeline.to(phaseDisruptRef.current, { opacity: 0, duration: 0.2 }, 6.1);
-      timeline.to(phaseNetRef.current, { opacity: 1, duration: 0.2 }, 6.1);
+      timeline.to(phaseDisruptRef.current, { opacity: 0, duration: 0.15 }, 6.05);
+      timeline.to(phaseNetRef.current, { opacity: 1, duration: 0.15 }, 6.2);
       timeline.to(introRef.current, { opacity: 0, duration: 0.25 }, 6.2);
       timeline.to(disruptRef.current, { opacity: 0, y: -12, duration: 0.3 }, 6.2);
       timeline.fromTo(
@@ -533,6 +542,7 @@ export default function ExistenceExperience() {
         </div>
 
         <div className={styles.vignette} aria-hidden />
+        <div className={styles.textScrim} aria-hidden />
         <div className={styles.grain} aria-hidden />
 
         <div className={styles.overlay} data-project-focus={activeProject ? "true" : "false"}>
@@ -583,7 +593,9 @@ export default function ExistenceExperience() {
             <p className={styles.networkIntro}>
               SELECTED ENGINEERING PROJECTS — Explore the systems I&apos;ve built.
             </p>
-            <p className={styles.networkHint}>HOVER OR FOCUS A NODE TO INSPECT</p>
+            <p className={styles.networkHint}>
+              {isTouch ? "TAP A NODE TO INSPECT" : "HOVER OR FOCUS A NODE TO INSPECT"}
+            </p>
           </div>
 
           <div ref={identityRef} className={`${styles.phaseBlock} ${styles.identityBlock}`}>
@@ -621,14 +633,23 @@ export default function ExistenceExperience() {
               href={projects[index].github}
               target="_blank"
               rel="noreferrer"
-              aria-label={`Open ${projects[index].title} on GitHub`}
+              aria-label={`Inspect ${projects[index].title} project`}
               onPointerEnter={() => focusProject(index)}
-              onPointerLeave={scheduleProjectBlur}
+              onPointerLeave={(event) => {
+                if (event.pointerType === "mouse") scheduleProjectBlur();
+              }}
+              onClick={(event) => {
+                if (!isTouch) return;
+                event.preventDefault();
+                focusProject(index);
+              }}
               onFocus={() => focusProject(index)}
               onBlur={scheduleProjectBlur}
             >
               <span className={styles.projectNodeCore} />
-              <span className={styles.projectNodeLabel}>{projects[index].title}</span>
+              <span className={styles.projectNodeLabel}>
+                <span className={styles.projectNodeLabelText}>{projects[index].title}</span>
+              </span>
             </a>
           ))}
 
@@ -638,12 +659,22 @@ export default function ExistenceExperience() {
             aria-live="polite"
             aria-hidden={!activeProject}
             onPointerEnter={cancelProjectBlur}
-            onPointerLeave={scheduleProjectBlur}
+            onPointerLeave={(event) => {
+              if (event.pointerType === "mouse") scheduleProjectBlur();
+            }}
             onFocus={cancelProjectBlur}
             onBlur={scheduleProjectBlur}
           >
             {activeProject && (
               <>
+                <button
+                  type="button"
+                  className={styles.previewClose}
+                  aria-label="Close project details"
+                  onClick={clearProjectFocus}
+                >
+                  ×
+                </button>
                 <span className={styles.previewEyebrow}>
                   PROJECT FILE / {String((focusedProject ?? 0) + 1).padStart(2, "0")}
                 </span>
